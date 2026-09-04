@@ -6,7 +6,7 @@
     <title>Zhen Choo Chinese Restaurant</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
     <style>
         /* ── Reset & Base ── */
         *,
@@ -23,7 +23,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fcf8f3;
+            background-color: #fdf8f0;
             color: #2c1810;
             line-height: 1.6;
         }
@@ -49,6 +49,45 @@
             font-family: 'Playfair Display', serif;
         }
 
+        .chinese-font {
+            font-family: 'Ma Shan Zheng', cursive;
+            letter-spacing: 2px;
+        }
+
+        /* ── Decorative Elements ── */
+        .lantern-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 16px auto 28px;
+        }
+
+        .lantern-divider .line {
+            flex: 1;
+            max-width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c0392b, transparent);
+        }
+
+        .lantern-divider .lantern {
+            font-size: 1.6rem;
+            opacity: 0.8;
+        }
+
+        .chinese-border {
+            border: 2px solid #c0392b;
+            border-radius: 8px;
+            padding: 4px;
+            position: relative;
+        }
+
+        .chinese-border-inner {
+            border: 1px solid #d4a373;
+            border-radius: 6px;
+            padding: 2px;
+        }
+
         /* ── Header / Navigation ── */
         header {
             background: #1a0e08;
@@ -58,6 +97,7 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #c0392b;
         }
 
         .header-inner {
@@ -70,9 +110,19 @@
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo .chinese {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.4rem;
+            color: #e8c9a0;
+            letter-spacing: 4px;
         }
 
         .logo span {
@@ -80,13 +130,14 @@
         }
 
         .logo .sub {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             font-family: 'Inter', sans-serif;
             font-weight: 300;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: #b8864b;
             display: block;
             margin-top: -4px;
+            text-transform: uppercase;
         }
 
         .nav-links {
@@ -100,6 +151,22 @@
 
         .nav-links a {
             transition: color 0.25s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4a373;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
@@ -107,17 +174,21 @@
         }
 
         .nav-cta {
-            background: #d4a373;
-            color: #1a0e08 !important;
-            padding: 8px 22px;
+            background: #c0392b;
+            color: #f5e6d3 !important;
+            padding: 8px 24px;
             border-radius: 30px;
             font-weight: 600;
             transition: background 0.25s;
         }
 
+        .nav-cta::after {
+            display: none !important;
+        }
+
         .nav-cta:hover {
-            background: #e8c9a0 !important;
-            color: #1a0e08 !important;
+            background: #e74c3c !important;
+            color: #f5e6d3 !important;
         }
 
         /* ── Mobile Nav Toggle ── */
@@ -142,7 +213,7 @@
 
         /* ── Hero ── */
         .hero {
-            background: linear-gradient(135deg, #1a0e08 0%, #3d241a 100%);
+            background: linear-gradient(135deg, #1a0e08 0%, #2c1810 50%, #3d241a 100%);
             color: #f5e6d3;
             padding: 80px 0 70px;
             text-align: center;
@@ -154,8 +225,19 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a373' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.3;
+            background: radial-gradient(circle at 20% 50%, rgba(192, 57, 43, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 80% 50%, rgba(212, 163, 115, 0.06) 0%, transparent 60%);
+        }
+
+        .hero::after {
+            content: '福';
+            position: absolute;
+            right: -20px;
+            bottom: -40px;
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 20rem;
+            color: rgba(212, 163, 115, 0.04);
+            transform: rotate(-12deg);
         }
 
         .hero-content {
@@ -165,22 +247,31 @@
 
         .hero .badge {
             display: inline-block;
-            background: #d4a373;
-            color: #1a0e08;
-            padding: 4px 20px;
+            background: #c0392b;
+            color: #f5e6d3;
+            padding: 4px 24px;
             border-radius: 30px;
             font-size: 0.75rem;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 16px;
+        }
+
+        .hero .chinese-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 3rem;
+            color: #e8c9a0;
+            letter-spacing: 8px;
+            margin-bottom: 4px;
+            opacity: 0.7;
         }
 
         .hero h1 {
             font-size: 4.2rem;
             font-weight: 700;
             margin-bottom: 4px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
         .hero .subtitle {
@@ -198,7 +289,7 @@
             margin: 0 auto 28px;
             opacity: 0.85;
             font-weight: 300;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
         .hero-actions {
@@ -209,9 +300,9 @@
         }
 
         .btn-primary {
-            background: #d4a373;
-            color: #1a0e08;
-            padding: 14px 40px;
+            background: #c0392b;
+            color: #f5e6d3;
+            padding: 14px 44px;
             border-radius: 40px;
             font-weight: 600;
             font-size: 1rem;
@@ -219,17 +310,18 @@
             cursor: pointer;
             transition: background 0.25s, transform 0.15s;
             display: inline-block;
+            letter-spacing: 1px;
         }
 
         .btn-primary:hover {
-            background: #e8c9a0;
+            background: #e74c3c;
             transform: translateY(-2px);
         }
 
         .btn-outline {
             background: transparent;
             color: #f5e6d3;
-            padding: 14px 40px;
+            padding: 14px 44px;
             border-radius: 40px;
             font-weight: 600;
             font-size: 1rem;
@@ -237,6 +329,7 @@
             cursor: pointer;
             transition: background 0.25s, color 0.25s;
             display: inline-block;
+            letter-spacing: 1px;
         }
 
         .btn-outline:hover {
@@ -254,8 +347,18 @@
             font-size: 2.4rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
             color: #1a0e08;
+        }
+
+        .section-title .chinese {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 2rem;
+            color: #c0392b;
+            display: block;
+            font-weight: 400;
+            letter-spacing: 6px;
+            margin-bottom: 2px;
         }
 
         .section-subtitle {
@@ -263,7 +366,7 @@
             font-size: 1rem;
             color: #6b4c3a;
             max-width: 640px;
-            margin: 0 auto 40px;
+            margin: 0 auto 36px;
             font-weight: 300;
         }
 
@@ -271,17 +374,21 @@
             color: #b8864b;
         }
 
-        .divider {
-            width: 60px;
-            height: 3px;
-            background: #d4a373;
-            margin: 12px auto 28px;
-            border-radius: 4px;
-        }
-
         /* ── About Section ── */
         .about-section {
             background: #f8f2eb;
+            position: relative;
+        }
+
+        .about-section::before {
+            content: '家';
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 12rem;
+            color: rgba(192, 57, 43, 0.04);
+            opacity: 0.5;
         }
 
         .about-story {
@@ -290,11 +397,13 @@
             text-align: center;
             font-size: 1.1rem;
             color: #2c1810;
-            line-height: 1.8;
+            line-height: 1.9;
+            position: relative;
+            z-index: 1;
         }
 
         .about-story .highlight {
-            color: #b8864b;
+            color: #c0392b;
             font-weight: 600;
         }
 
@@ -312,20 +421,23 @@
             gap: 16px;
             flex-wrap: wrap;
             margin-top: 28px;
+            position: relative;
+            z-index: 1;
         }
 
         .about-tag {
             background: #fff;
-            padding: 6px 22px;
+            padding: 8px 24px;
             border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 500;
             color: #3d241a;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(212, 163, 115, 0.2);
         }
 
         .about-tag span {
-            color: #b8864b;
+            color: #c0392b;
             margin-right: 6px;
         }
 
@@ -342,6 +454,7 @@
             padding: 36px 40px;
             border-radius: 16px;
             box-shadow: 0 8px 30px rgba(26, 14, 8, 0.08);
+            border-left: 4px solid #c0392b;
         }
 
         .location-card h3 {
@@ -358,7 +471,7 @@
 
         .location-card .address .shopping-center {
             font-weight: 500;
-            color: #b8864b;
+            color: #c0392b;
         }
 
         .location-card .detail-label {
@@ -369,7 +482,7 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #b8864b;
+            color: #c0392b;
         }
 
         .location-card .detail-value {
@@ -382,7 +495,7 @@
         }
 
         .location-card .detail-value .phone-link:hover {
-            color: #b8864b;
+            color: #c0392b;
         }
 
         .location-card .service-note {
@@ -394,7 +507,7 @@
         }
 
         .location-card .service-note strong {
-            color: #b8864b;
+            color: #c0392b;
         }
 
         .location-card .price-range {
@@ -413,6 +526,7 @@
             overflow: hidden;
             min-height: 280px;
             background: #e8ddd0;
+            border: 3px solid #c0392b;
         }
 
         .location-map iframe {
@@ -425,7 +539,18 @@
 
         /* ── Hours ── */
         .hours-section {
-            background: #f0e8de;
+            background: #f8f2eb;
+            position: relative;
+        }
+
+        .hours-section::after {
+            content: '食';
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 10rem;
+            color: rgba(192, 57, 43, 0.04);
         }
 
         .hours-grid {
@@ -434,6 +559,8 @@
             gap: 16px;
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .hours-card {
@@ -442,12 +569,18 @@
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            border-bottom: 3px solid #d4a373;
+            transition: transform 0.2s;
+        }
+
+        .hours-card:hover {
+            transform: translateY(-3px);
         }
 
         .hours-card .day {
             font-weight: 600;
             font-size: 0.85rem;
-            color: #b8864b;
+            color: #c0392b;
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
@@ -467,7 +600,7 @@
 
         /* ── Menu ── */
         .menu-section {
-            background: #fcf8f3;
+            background: #fdf8f0;
         }
 
         .menu-note {
@@ -480,10 +613,11 @@
             background: #f0e8de;
             padding: 10px 24px;
             border-radius: 40px;
+            border: 1px solid rgba(192, 57, 43, 0.15);
         }
 
         .menu-note strong {
-            color: #b8864b;
+            color: #c0392b;
         }
 
         .menu-categories {
@@ -496,21 +630,23 @@
 
         .menu-category-btn {
             background: transparent;
-            border: 2px solid #d4a373;
-            padding: 8px 24px;
+            border: 2px solid #c0392b;
+            padding: 8px 20px;
             border-radius: 40px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
             transition: background 0.25s, color 0.25s;
             color: #1a0e08;
             font-family: 'Inter', sans-serif;
+            white-space: nowrap;
         }
 
         .menu-category-btn.active,
         .menu-category-btn:hover {
-            background: #d4a373;
-            color: #1a0e08;
+            background: #c0392b;
+            color: #f5e6d3;
+            border-color: #c0392b;
         }
 
         .menu-grid {
@@ -525,7 +661,8 @@
             border-radius: 12px;
             box-shadow: 0 4px 16px rgba(26, 14, 8, 0.06);
             transition: transform 0.2s, box-shadow 0.2s;
-            border-left: 4px solid #d4a373;
+            border-left: 4px solid #c0392b;
+            position: relative;
         }
 
         .menu-item:hover {
@@ -559,28 +696,47 @@
         }
 
         .menu-item .badge.spicy {
-            background: #f0d6c8;
-            color: #a0522d;
+            background: #fdf0e8;
+            color: #c0392b;
         }
 
         .menu-item .badge.veg {
-            background: #d4e8d4;
+            background: #e8f5e8;
             color: #2d6b2d;
         }
 
         /* ── Contact ── */
         .contact-section {
-            background: linear-gradient(135deg, #1a0e08 0%, #3d241a 100%);
+            background: linear-gradient(135deg, #1a0e08 0%, #2c1810 50%, #3d241a 100%);
             color: #f5e6d3;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '欢迎';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 15rem;
+            color: rgba(212, 163, 115, 0.03);
+            white-space: nowrap;
+            pointer-events: none;
         }
 
         .contact-section .section-title {
             color: #f5e6d3;
+            position: relative;
+            z-index: 1;
         }
 
         .contact-section .section-subtitle {
             color: #d4a373;
+            position: relative;
+            z-index: 1;
         }
 
         .contact-info {
@@ -589,6 +745,8 @@
             gap: 48px;
             flex-wrap: wrap;
             margin-top: 12px;
+            position: relative;
+            z-index: 1;
         }
 
         .contact-item {
@@ -633,7 +791,7 @@
             padding: 28px 0;
             text-align: center;
             font-size: 0.85rem;
-            border-top: 1px solid #2c1a12;
+            border-top: 2px solid #c0392b;
         }
 
         footer .footer-brand {
@@ -641,6 +799,12 @@
             font-size: 1.1rem;
             color: #d4a373;
             margin-bottom: 2px;
+        }
+
+        footer .footer-brand .chinese {
+            font-family: 'Ma Shan Zheng', cursive;
+            color: #c0392b;
+            font-size: 1.2rem;
         }
 
         /* ── Responsive ── */
@@ -652,6 +816,10 @@
 
             .hero h1 {
                 font-size: 2.8rem;
+            }
+
+            .hero .chinese-title {
+                font-size: 2.2rem;
             }
 
             .section-title {
@@ -684,6 +852,10 @@
 
             .hero h1 {
                 font-size: 2.2rem;
+            }
+
+            .hero .chinese-title {
+                font-size: 1.8rem;
             }
 
             .hero .subtitle {
@@ -721,6 +893,11 @@
                 flex-direction: column;
                 gap: 4px;
             }
+
+            .menu-category-btn {
+                font-size: 0.7rem;
+                padding: 6px 14px;
+            }
         }
 
         @media (max-width: 420px) {
@@ -730,6 +907,10 @@
 
             .hero h1 {
                 font-size: 1.8rem;
+            }
+
+            .hero .chinese-title {
+                font-size: 1.4rem;
             }
 
             .contact-item .value {
@@ -748,6 +929,7 @@
     <header>
         <div class="container header-inner">
             <div class="logo">
+                <span class="chinese">珍珠</span>
                 Zhen <span>Choo</span>
                 <span class="sub">Chinese Restaurant</span>
             </div>
@@ -770,15 +952,16 @@
     <section class="hero">
         <div class="container hero-content">
             <span class="badge">Take Out Only</span>
-            <p class="subtitle serif">Authentic Szechuan • Hunan • Mandarin</p>
+            <div class="chinese-title">珍珠</div>
             <h1 class="serif">Zhen Choo</h1>
+            <p class="subtitle serif">Authentic Szechuan • Hunan • Mandarin</p>
             <p class="tagline">
                 Where every dish tells a story of heritage and culinary craftsmanship.
                 Made fresh with vegetable oil &bull; low salt available.
             </p>
             <div class="hero-actions">
                 <a href="#menu" class="btn-primary">View Full Menu</a>
-                <a href="#contact" class="btn-outline">Order Now</a>
+                <a href="#contact" class="btn-outline">Call us to order</a>
             </div>
         </div>
     </section>
@@ -786,11 +969,18 @@
     <!-- ─── ABOUT ─── -->
     <section id="about" class="about-section">
         <div class="container">
-            <h2 class="section-title">Our <span class="accent">Story</span></h2>
-            <div class="divider"></div>
+            <h2 class="section-title">
+                <span class="chinese">我们的故事</span>
+                Our <span class="accent">Story</span>
+            </h2>
+            <div class="lantern-divider">
+                <span class="line"></span>
+                <span class="lantern">🏮</span>
+                <span class="line"></span>
+            </div>
             <div class="about-story">
                 <p>
-                    Zhen Choo is more than a restaurant – it's a labor of love. Locally owned and operated by a
+                    Zhen Choo is more than a restaurant – it's our <span class="highlight">home</span>. Locally owned and operated by a
                     <span class="highlight">dedicated couple</span>, we opened our doors in
                     <span class="highlight">2003</span> with a simple dream: to bring the true taste of authentic
                     Chinese home cooking to the Pittsburgh community.
@@ -804,6 +994,9 @@
                 <p>
                     Our commitment remains the same today – to provide a <span class="highlight">warm, inviting
                     environment</span> where every guest feels like family, and every bite tastes like tradition.
+                    <br>
+                    <span style="font-family: 'Ma Shan Zheng', cursive; font-size: 1.4rem; color: #c0392b; display: inline-block; margin-top: 8px;">欢迎回家</span>
+                    <span style="display: block; font-size: 0.9rem; color: #6b4c3a; font-style: italic;">— Welcome home</span>
                 </p>
             </div>
             <div class="about-tags">
@@ -811,6 +1004,7 @@
                 <span class="about-tag"><span>❤️</span> Family Owned</span>
                 <span class="about-tag"><span>🥢</span> Authentic Recipes</span>
                 <span class="about-tag"><span>🌿</span> Vegetarian Options</span>
+                <span class="about-tag"><span>🏠</span> Local &amp; Proud</span>
             </div>
         </div>
     </section>
@@ -818,7 +1012,15 @@
     <!-- ─── LOCATION ─── -->
     <section id="location">
         <div class="container">
-            <h2 class="section-title">Find <span class="accent">Us</span></h2>
+            <h2 class="section-title">
+                <span class="chinese">找到我们</span>
+                Find <span class="accent">Us</span>
+            </h2>
+            <div class="lantern-divider">
+                <span class="line"></span>
+                <span class="lantern">🏮</span>
+                <span class="line"></span>
+            </div>
             <p class="section-subtitle">
                 Located in the Braddock Hills Shopping Center, we're here to serve you.
             </p>
@@ -859,7 +1061,15 @@
     <!-- ─── HOURS ─── -->
     <section id="hours" class="hours-section">
         <div class="container">
-            <h2 class="section-title">Hours of <span class="accent">Operation</span></h2>
+            <h2 class="section-title">
+                <span class="chinese">营业时间</span>
+                Hours of <span class="accent">Operation</span>
+            </h2>
+            <div class="lantern-divider">
+                <span class="line"></span>
+                <span class="lantern">🏮</span>
+                <span class="line"></span>
+            </div>
             <p class="section-subtitle">
                 Open 7 days a week. Come enjoy our warm hospitality and delicious cuisine.
             </p>
@@ -884,7 +1094,15 @@
     <!-- ─── MENU ─── -->
     <section id="menu" class="menu-section">
         <div class="container">
-            <h2 class="section-title">Our <span class="accent">Menu</span></h2>
+            <h2 class="section-title">
+                <span class="chinese">我们的菜单</span>
+                Our <span class="accent">Menu</span>
+            </h2>
+            <div class="lantern-divider">
+                <span class="line"></span>
+                <span class="lantern">🏮</span>
+                <span class="line"></span>
+            </div>
             <p class="section-subtitle">
                 Made fresh daily with the finest ingredients. Prices available upon request.
             </p>
@@ -895,19 +1113,22 @@
             </div>
 
             <div class="menu-categories" id="menuCategories">
-                <button class="menu-category-btn active" data-category="all">All</button>
+                <button class="menu-category-btn active" data-category="lunch">Lunch Specials</button>
+                <button class="menu-category-btn" data-category="chefs">Chef's Suggestion</button>
+                <button class="menu-category-btn" data-category="combination">Combination Plates</button>
+                <button class="menu-category-btn" data-category="specialties">Specialities</button>
                 <button class="menu-category-btn" data-category="appetizers">Appetizers</button>
                 <button class="menu-category-btn" data-category="soups">Soups</button>
-                <button class="menu-category-btn" data-category="vegetable">Vegetable</button>
-                <button class="menu-category-btn" data-category="egg-foo-young">Egg Foo Young</button>
-                <button class="menu-category-btn" data-category="combination">Combination Plates</button>
-                <button class="menu-category-btn" data-category="lunch">Lunch Special</button>
-                <button class="menu-category-btn" data-category="chicken-pork">Chicken &amp; Pork</button>
+                <button class="menu-category-btn" data-category="fried-rice">Fried Rice</button>
+                <button class="menu-category-btn" data-category="lo-mein">Lo Mein</button>
+                <button class="menu-category-btn" data-category="mai-fun">Mai Fun</button>
+                <button class="menu-category-btn" data-category="chow-mein">Chow Mein</button>
+                <button class="menu-category-btn" data-category="chop-suey">Chop Suey</button>
+                <button class="menu-category-btn" data-category="chicken-pork">Chicken or Pork</button>
                 <button class="menu-category-btn" data-category="beef">Beef</button>
                 <button class="menu-category-btn" data-category="seafood">Seafood</button>
-                <button class="menu-category-btn" data-category="noodles">Noodles &amp; Rice</button>
-                <button class="menu-category-btn" data-category="specialties">Specialties</button>
-                <button class="menu-category-btn" data-category="chefs">Chef's Suggestions</button>
+                <button class="menu-category-btn" data-category="vegetable">Vegetable</button>
+                <button class="menu-category-btn" data-category="egg-foo-young">Egg Foo Young</button>
             </div>
 
             <div class="menu-grid" id="menuGrid">
@@ -919,7 +1140,15 @@
     <!-- ─── CONTACT ─── -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title">Get in <span class="accent" style="color:#d4a373;">Touch</span></h2>
+            <h2 class="section-title">
+                <span class="chinese" style="color:#d4a373;">联系我们</span>
+                Get in <span class="accent" style="color:#d4a373;">Touch</span>
+            </h2>
+            <div class="lantern-divider">
+                <span class="line" style="background: linear-gradient(90deg, transparent, #d4a373, transparent);"></span>
+                <span class="lantern">🏮</span>
+                <span class="line" style="background: linear-gradient(90deg, transparent, #d4a373, transparent);"></span>
+            </div>
             <p class="section-subtitle">
                 Call ahead for take out — we'll have your order hot and ready when you arrive.
             </p>
@@ -943,10 +1172,15 @@
     <!-- ─── FOOTER ─── -->
     <footer>
         <div class="container">
-            <div class="footer-brand">Zhen Choo</div>
+            <div class="footer-brand">
+                <span class="chinese">珍珠</span> Zhen Choo
+            </div>
             <p>© 2026 Zhen Choo Chinese Restaurant &mdash; All rights reserved.</p>
             <p style="font-size:0.75rem; margin-top:4px; color:#6b5a4e;">
                 Braddock Hills Shopping Center &bull; 268 Yost Blvd, Pittsburgh, PA 15221
+            </p>
+            <p style="font-size:0.7rem; margin-top:6px; color:#5a4a3e; letter-spacing:2px;">
+                真诚服务 · 家的味道
             </p>
         </div>
     </footer>
@@ -967,7 +1201,7 @@
                 });
             });
 
-            // ── Full Menu Data from PDF ──
+            // ── Full Menu Data ──
             const menuData = [
                 // ── Appetizers ──
                 { id: 1, name: 'Shrimp Egg Roll', description: 'Crispy egg roll filled with shrimp and vegetables.', category: 'appetizers' },
@@ -1029,7 +1263,7 @@
                 { id: 49, name: 'Sesame Chicken', description: 'Crispy chicken with a sweet sauce and sesame seeds.', category: 'combination' },
                 { id: 50, name: 'Boneless Spare Ribs', description: 'Tender boneless ribs with a sweet glaze.', category: 'combination' },
 
-                // ── Lunch Special ──
+                // ── Lunch Specials ──
                 { id: 51, name: 'Chicken or Pork Chow Mein', description: 'Classic chow mein with your choice of meat.', category: 'lunch' },
                 { id: 52, name: 'Shrimp Chow Mein', description: 'Chow mein with shrimp and vegetables.', category: 'lunch' },
                 { id: 53, name: 'Shrimp and Chicken', description: 'A delicious combination of shrimp and chicken.', category: 'lunch' },
@@ -1080,37 +1314,45 @@
                 { id: 92, name: 'Scallop with Mixed Chinese Vegetable', description: 'Fresh scallops with mixed vegetables.', category: 'seafood' },
                 { id: 93, name: 'Moo Shu Shrimp (w/4 Pancakes)', description: 'Shrimp with vegetables and pancakes.', category: 'seafood' },
 
-                // ── Noodles & Rice ──
-                { id: 94, name: 'Vegetable Fried Rice', description: 'Wok-fried rice with fresh vegetables and egg.', category: 'noodles', badge: 'Vegetarian' },
-                { id: 95, name: 'Pork or Chicken Fried Rice', description: 'Fried rice with your choice of pork or chicken.', category: 'noodles' },
-                { id: 96, name: 'Shrimp Fried Rice', description: 'Fried rice with succulent shrimp.', category: 'noodles' },
-                { id: 97, name: 'Beef Fried Rice', description: 'Fried rice with tender beef.', category: 'noodles' },
-                { id: 98, name: 'House Special Fried Rice', description: 'A combination of meats in flavorful fried rice.', category: 'noodles' },
-                { id: 99, name: 'Vegetable Lo Mein', description: 'Soft noodles with fresh vegetables.', category: 'noodles', badge: 'Vegetarian' },
-                { id: 100, name: 'Pork Lo Mein', description: 'Soft noodles with pork and vegetables.', category: 'noodles' },
-                { id: 101, name: 'Chicken Lo Mein', description: 'Soft noodles with chicken and vegetables.', category: 'noodles' },
-                { id: 102, name: 'Beef Lo Mein', description: 'Soft noodles with beef and vegetables.', category: 'noodles' },
-                { id: 103, name: 'Shrimp Lo Mein', description: 'Soft noodles with shrimp and vegetables.', category: 'noodles' },
-                { id: 104, name: 'House Special Lo Mein', description: 'A combination of meats in soft noodles.', category: 'noodles' },
-                { id: 105, name: 'Vegetable Mai Fun', description: 'Rice noodles with fresh vegetables.', category: 'noodles', badge: 'Vegetarian' },
-                { id: 106, name: 'Pork Mai Fun', description: 'Rice noodles with pork and vegetables.', category: 'noodles' },
-                { id: 107, name: 'Chicken Mai Fun', description: 'Rice noodles with chicken and vegetables.', category: 'noodles' },
-                { id: 108, name: 'Beef Mai Fun', description: 'Rice noodles with beef and vegetables.', category: 'noodles' },
-                { id: 109, name: 'Shrimp Mai Fun', description: 'Rice noodles with shrimp and vegetables.', category: 'noodles' },
-                { id: 110, name: 'House Special Mai Fun', description: 'A combination of meats in rice noodles.', category: 'noodles' },
-                { id: 111, name: 'Singapore Mai Fun', description: 'Rice noodles with shrimp, BBQ pork, and curry spice.', category: 'noodles', badge: 'Spicy' },
-                { id: 112, name: 'Vegetable Chow Mein', description: 'Crispy noodles with fresh vegetables.', category: 'noodles', badge: 'Vegetarian' },
-                { id: 113, name: 'Chicken Chow Mein', description: 'Crispy noodles with chicken and vegetables.', category: 'noodles' },
-                { id: 114, name: 'Pork Chow Mein', description: 'Crispy noodles with pork and vegetables.', category: 'noodles' },
-                { id: 115, name: 'Shrimp Chow Mein', description: 'Crispy noodles with shrimp and vegetables.', category: 'noodles' },
-                { id: 116, name: 'Beef Chow Mein', description: 'Crispy noodles with beef and vegetables.', category: 'noodles' },
-                { id: 117, name: 'Vegetable Chop Suey', description: 'Mixed vegetables in a savory chop suey sauce.', category: 'noodles', badge: 'Vegetarian' },
-                { id: 118, name: 'Chicken Chop Suey', description: 'Chicken and vegetables in chop suey sauce.', category: 'noodles' },
-                { id: 119, name: 'Pork Chop Suey', description: 'Pork and vegetables in chop suey sauce.', category: 'noodles' },
-                { id: 120, name: 'Shrimp Chop Suey', description: 'Shrimp and vegetables in chop suey sauce.', category: 'noodles' },
-                { id: 121, name: 'Beef Chop Suey', description: 'Beef and vegetables in chop suey sauce.', category: 'noodles' },
+                // ── Fried Rice ──
+                { id: 94, name: 'Vegetable Fried Rice', description: 'Wok-fried rice with fresh vegetables and egg.', category: 'fried-rice', badge: 'Vegetarian' },
+                { id: 95, name: 'Pork or Chicken Fried Rice', description: 'Fried rice with your choice of pork or chicken.', category: 'fried-rice' },
+                { id: 96, name: 'Shrimp Fried Rice', description: 'Fried rice with succulent shrimp.', category: 'fried-rice' },
+                { id: 97, name: 'Beef Fried Rice', description: 'Fried rice with tender beef.', category: 'fried-rice' },
+                { id: 98, name: 'House Special Fried Rice', description: 'A combination of meats in flavorful fried rice.', category: 'fried-rice' },
 
-                // ── Specialties ──
+                // ── Lo Mein ──
+                { id: 99, name: 'Vegetable Lo Mein', description: 'Soft noodles with fresh vegetables.', category: 'lo-mein', badge: 'Vegetarian' },
+                { id: 100, name: 'Pork Lo Mein', description: 'Soft noodles with pork and vegetables.', category: 'lo-mein' },
+                { id: 101, name: 'Chicken Lo Mein', description: 'Soft noodles with chicken and vegetables.', category: 'lo-mein' },
+                { id: 102, name: 'Beef Lo Mein', description: 'Soft noodles with beef and vegetables.', category: 'lo-mein' },
+                { id: 103, name: 'Shrimp Lo Mein', description: 'Soft noodles with shrimp and vegetables.', category: 'lo-mein' },
+                { id: 104, name: 'House Special Lo Mein', description: 'A combination of meats in soft noodles.', category: 'lo-mein' },
+
+                // ── Mai Fun ──
+                { id: 105, name: 'Vegetable Mai Fun', description: 'Rice noodles with fresh vegetables.', category: 'mai-fun', badge: 'Vegetarian' },
+                { id: 106, name: 'Pork Mai Fun', description: 'Rice noodles with pork and vegetables.', category: 'mai-fun' },
+                { id: 107, name: 'Chicken Mai Fun', description: 'Rice noodles with chicken and vegetables.', category: 'mai-fun' },
+                { id: 108, name: 'Beef Mai Fun', description: 'Rice noodles with beef and vegetables.', category: 'mai-fun' },
+                { id: 109, name: 'Shrimp Mai Fun', description: 'Rice noodles with shrimp and vegetables.', category: 'mai-fun' },
+                { id: 110, name: 'House Special Mai Fun', description: 'A combination of meats in rice noodles.', category: 'mai-fun' },
+                { id: 111, name: 'Singapore Mai Fun', description: 'Rice noodles with shrimp, BBQ pork, and curry spice.', category: 'mai-fun', badge: 'Spicy' },
+
+                // ── Chow Mein ──
+                { id: 112, name: 'Vegetable Chow Mein', description: 'Crispy noodles with fresh vegetables.', category: 'chow-mein', badge: 'Vegetarian' },
+                { id: 113, name: 'Chicken Chow Mein', description: 'Crispy noodles with chicken and vegetables.', category: 'chow-mein' },
+                { id: 114, name: 'Pork Chow Mein', description: 'Crispy noodles with pork and vegetables.', category: 'chow-mein' },
+                { id: 115, name: 'Shrimp Chow Mein', description: 'Crispy noodles with shrimp and vegetables.', category: 'chow-mein' },
+                { id: 116, name: 'Beef Chow Mein', description: 'Crispy noodles with beef and vegetables.', category: 'chow-mein' },
+
+                // ── Chop Suey ──
+                { id: 117, name: 'Vegetable Chop Suey', description: 'Mixed vegetables in a savory chop suey sauce.', category: 'chop-suey', badge: 'Vegetarian' },
+                { id: 118, name: 'Chicken Chop Suey', description: 'Chicken and vegetables in chop suey sauce.', category: 'chop-suey' },
+                { id: 119, name: 'Pork Chop Suey', description: 'Pork and vegetables in chop suey sauce.', category: 'chop-suey' },
+                { id: 120, name: 'Shrimp Chop Suey', description: 'Shrimp and vegetables in chop suey sauce.', category: 'chop-suey' },
+                { id: 121, name: 'Beef Chop Suey', description: 'Beef and vegetables in chop suey sauce.', category: 'chop-suey' },
+
+                // ── Specialities ──
                 { id: 122, name: 'Fried Chicken Wings', description: 'Crispy fried chicken wings.', category: 'specialties' },
                 { id: 123, name: 'Fried Jumbo Shrimp', description: 'Large crispy fried shrimp.', category: 'specialties' },
                 { id: 124, name: 'Fried Baby Shrimp', description: 'Crispy fried baby shrimp.', category: 'specialties' },
@@ -1149,7 +1391,7 @@
                 return '';
             }
 
-            function renderMenu(category = 'all') {
+            function renderMenu(category = 'lunch') {
                 const filtered = category === 'all' ?
                     menuData :
                     menuData.filter(item => item.category === category);
@@ -1178,8 +1420,8 @@
                 });
             });
 
-            // ── Initial Render ──
-            renderMenu('all');
+            // ── Initial Render (Lunch Specials) ──
+            renderMenu('lunch');
 
             // ── Smooth scroll for anchor links ──
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
