@@ -142,7 +142,7 @@
 
         .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 20px;
             font-weight: 500;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
@@ -191,6 +191,33 @@
             color: #f5e6d3 !important;
         }
 
+        /* ── Language Toggle ── */
+        .lang-toggle {
+            background: transparent;
+            border: 1.5px solid #d4a373;
+            color: #d4a373;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.25s, color 0.25s;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .lang-toggle:hover {
+            background: #d4a373;
+            color: #1a0e08;
+        }
+
+        .lang-toggle.active {
+            background: #d4a373;
+            color: #1a0e08;
+        }
+
         /* ── Mobile Nav Toggle ── */
         .nav-toggle {
             display: none;
@@ -209,6 +236,12 @@
             background: #f5e6d3;
             border-radius: 4px;
             transition: 0.3s;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 14px;
         }
 
         /* ── Hero ── */
@@ -840,6 +873,7 @@
                 padding: 20px 0;
                 gap: 14px;
                 align-items: center;
+                order: 10;
             }
 
             .nav-links.open {
@@ -848,6 +882,15 @@
 
             .nav-toggle {
                 display: flex;
+            }
+
+            .nav-controls {
+                gap: 10px;
+            }
+
+            .lang-toggle {
+                font-size: 0.65rem;
+                padding: 3px 12px;
             }
 
             .hero h1 {
@@ -898,6 +941,10 @@
                 font-size: 0.7rem;
                 padding: 6px 14px;
             }
+
+            .header-inner {
+                flex-wrap: wrap;
+            }
         }
 
         @media (max-width: 420px) {
@@ -920,6 +967,16 @@
             .about-tags {
                 gap: 10px;
             }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+            .logo .chinese {
+                font-size: 1.1rem;
+            }
+            .logo .sub {
+                font-size: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -934,16 +991,19 @@
                 <span class="sub">Chinese Restaurant</span>
             </div>
 
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span><span></span><span></span>
-            </button>
+            <div class="nav-controls">
+                <button class="lang-toggle" id="langToggle" aria-label="Toggle language">中文</button>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
 
             <nav class="nav-links" id="navLinks">
-                <a href="#about">Our Story</a>
-                <a href="#location">Location</a>
-                <a href="#hours">Hours</a>
-                <a href="#menu">Menu</a>
-                <a href="#contact" class="nav-cta">Call Us</a>
+                <a href="#about" data-i18n="nav.about">Our Story</a>
+                <a href="#location" data-i18n="nav.location">Location</a>
+                <a href="#hours" data-i18n="nav.hours">Hours</a>
+                <a href="#menu" data-i18n="nav.menu">Menu</a>
+                <a href="#contact" class="nav-cta" data-i18n="nav.call">Call Us</a>
             </nav>
         </div>
     </header>
@@ -951,17 +1011,17 @@
     <!-- ─── HERO ─── -->
     <section class="hero">
         <div class="container hero-content">
-            <span class="badge">Take Out Only</span>
+            <span class="badge" data-i18n="hero.badge">Take Out Only</span>
             <div class="chinese-title">珍珠</div>
             <h1 class="serif">Zhen Choo</h1>
-            <p class="subtitle serif">Authentic Szechuan • Hunan • Mandarin</p>
-            <p class="tagline">
+            <p class="subtitle serif" data-i18n="hero.subtitle">Authentic Szechuan • Hunan • Mandarin</p>
+            <p class="tagline" data-i18n="hero.tagline">
                 Where every dish tells a story of heritage and culinary craftsmanship.
                 Made fresh with vegetable oil &bull; low salt available.
             </p>
             <div class="hero-actions">
-                <a href="#menu" class="btn-primary">View Full Menu</a>
-                <a href="#contact" class="btn-outline">Call us to order</a>
+                <a href="#menu" class="btn-primary" data-i18n="hero.btn1">View Full Menu</a>
+                <a href="#contact" class="btn-outline" data-i18n="hero.btn2">Call us to order</a>
             </div>
         </div>
     </section>
@@ -970,8 +1030,8 @@
     <section id="about" class="about-section">
         <div class="container">
             <h2 class="section-title">
-                <span class="chinese">我们的故事</span>
-                Our <span class="accent">Story</span>
+                <span class="chinese" data-i18n="about.chineseTitle">我们的故事</span>
+                <span data-i18n="about.titlePrefix">Our</span> <span class="accent" data-i18n="about.titleAccent">Story</span>
             </h2>
             <div class="lantern-divider">
                 <span class="line"></span>
@@ -979,32 +1039,32 @@
                 <span class="line"></span>
             </div>
             <div class="about-story">
-                <p>
+                <p data-i18n="about.p1">
                     Zhen Choo is more than a restaurant – it's our <span class="highlight">home</span>. Locally owned and operated by a
                     <span class="highlight">dedicated couple</span>, we opened our doors in
                     <span class="highlight">2003</span> with a simple dream: to bring the true taste of authentic
                     Chinese home cooking to the Pittsburgh community.
                 </p>
-                <p>
+                <p data-i18n="about.p2">
                     For <span class="highlight">over 20 years</span>, we've had the privilege of serving generations
                     of families, sharing meals, and creating lasting memories. Through the unprecedented challenges
                     of COVID, we worked tirelessly to keep our doors open and our neighbors fed, never compromising
                     on the quality or authenticity of our dishes.
                 </p>
-                <p>
+                <p data-i18n="about.p3">
                     Our commitment remains the same today – to provide a <span class="highlight">warm, inviting
                     environment</span> where every guest feels like family, and every bite tastes like tradition.
                     <br>
                     <span style="font-family: 'Ma Shan Zheng', cursive; font-size: 1.4rem; color: #c0392b; display: inline-block; margin-top: 8px;">欢迎回家</span>
-                    <span style="display: block; font-size: 0.9rem; color: #6b4c3a; font-style: italic;">— Welcome home</span>
+                    <span style="display: block; font-size: 0.9rem; color: #6b4c3a; font-style: italic;" data-i18n="about.welcome">— Welcome home</span>
                 </p>
             </div>
             <div class="about-tags">
-                <span class="about-tag"><span>🏮</span> Since 2003</span>
-                <span class="about-tag"><span>❤️</span> Family Owned</span>
-                <span class="about-tag"><span>🥢</span> Authentic Recipes</span>
-                <span class="about-tag"><span>🌿</span> Vegetarian Options</span>
-                <span class="about-tag"><span>🏠</span> Local &amp; Proud</span>
+                <span class="about-tag"><span>🏮</span> <span data-i18n="about.tag1">Since 2003</span></span>
+                <span class="about-tag"><span>❤️</span> <span data-i18n="about.tag2">Family Owned</span></span>
+                <span class="about-tag"><span>🥢</span> <span data-i18n="about.tag3">Authentic Recipes</span></span>
+                <span class="about-tag"><span>🌿</span> <span data-i18n="about.tag4">Vegetarian Options</span></span>
+                <span class="about-tag"><span>🏠</span> <span data-i18n="about.tag5">Local &amp; Proud</span></span>
             </div>
         </div>
     </section>
@@ -1013,430 +1073,799 @@
     <section id="location">
         <div class="container">
             <h2 class="section-title">
-                <span class="chinese">找到我们</span>
-                Find <span class="accent">Us</span>
+                <span class="chinese" data-i18n="location.chineseTitle">找到我们</span>
+                <span data-i18n="location.titlePrefix">Find</span> <span class="accent" data-i18n="location.titleAccent">Us</span>
             </h2>
             <div class="lantern-divider">
                 <span class="line"></span>
                 <span class="lantern">🏮</span>
                 <span class="line"></span>
             </div>
-            <p class="section-subtitle">
+            <p class="section-subtitle" data-i18n="location.subtitle">
                 Located in the Braddock Hills Shopping Center, we're here to serve you.
             </p>
 
             <div class="location-grid">
                 <div class="location-card">
-                    <h3 class="serif">📍 Our Location</h3>
-                    <p class="address"><span class="shopping-center">Braddock Hills Shopping Center</span></p>
+                    <h3 class="serif" data-i18n="location.cardTitle">📍 Our Location</h3>
+                    <p class="address"><span class="shopping-center" data-i18n="location.shoppingCenter">Braddock Hills Shopping Center</span></p>
                     <p class="address">268 Yost Blvd, Pittsburgh, PA 15221</p>
 
-                    <span class="detail-label">📞 Call to Order</span>
+                    <span class="detail-label" data-i18n="location.callLabel">📞 Call to Order</span>
                     <div class="detail-value contact-phones">
                         <a href="tel:+14122715122" class="phone-link">(412) 271-5122</a>
                         <a href="tel:+14122711899" class="phone-link">(412) 271-1899</a>
                     </div>
 
-                    <span class="detail-label">💰 Price Range</span>
-                    <p class="detail-value"><span class="price-range">$10 – $20 per person</span></p>
+                    <span class="detail-label" data-i18n="location.priceLabel">💰 Price Range</span>
+                    <p class="detail-value"><span class="price-range" data-i18n="location.price">$10 – $20 per person</span></p>
 
-                    <div class="service-note">
+                    <div class="service-note" data-i18n="location.serviceNote">
                         <strong>Service options:</strong> Take Out Only &bull; No Reservations &bull; Vegetarian options available
                     </div>
                 </div>
 
                 <div class="location-map">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3029.025584927248!2d-79.868717784636!3d40.42862997936251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834f2b2e8b6b4e3%3A0x3f4a0f2e1c5d6a7b!2s268%20Yost%20Blvd%2C%20Pittsburgh%2C%20PA%2015221!5e0!3m2!1sen!2sus!4v1700000000000"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Zhen Choo Restaurant location map">
-                    </iframe>
-                </div>
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3029.025584927248!2d-79.868717784636!3d40.42862997936251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834f2b2e8b6b4e3%3A0x3f4a0f2e1c5d6a7b!2s268%20Yost%20Blvd%2C%20Pittsburgh%2C%20PA%2015221!5e0!3m2!1sen!2sus!4v1700000000000"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Zhen Choo Restaurant location map">
+                </iframe>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ─── HOURS ─── -->
-    <section id="hours" class="hours-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="chinese">营业时间</span>
-                Hours of <span class="accent">Operation</span>
-            </h2>
-            <div class="lantern-divider">
-                <span class="line"></span>
-                <span class="lantern">🏮</span>
-                <span class="line"></span>
+<!-- ─── HOURS ─── -->
+<section id="hours" class="hours-section">
+    <div class="container">
+        <h2 class="section-title">
+            <span class="chinese" data-i18n="hours.chineseTitle">营业时间</span>
+            <span data-i18n="hours.titlePrefix">Hours of</span> <span class="accent" data-i18n="hours.titleAccent">Operation</span>
+        </h2>
+        <div class="lantern-divider">
+            <span class="line"></span>
+            <span class="lantern">🏮</span>
+            <span class="line"></span>
+        </div>
+        <p class="section-subtitle" data-i18n="hours.subtitle">
+            Open 7 days a week. Come enjoy our warm hospitality and delicious cuisine.
+        </p>
+
+        <div class="hours-grid">
+            <div class="hours-card">
+                <div class="day" data-i18n="hours.day1">Monday – Friday</div>
+                <div class="time">11:00 AM – 9:30 PM</div>
             </div>
-            <p class="section-subtitle">
-                Open 7 days a week. Come enjoy our warm hospitality and delicious cuisine.
-            </p>
-
-            <div class="hours-grid">
-                <div class="hours-card">
-                    <div class="day">Monday – Friday</div>
-                    <div class="time">11:00 AM – 9:30 PM</div>
-                </div>
-                <div class="hours-card">
-                    <div class="day">Saturday</div>
-                    <div class="time">1:00 PM – 9:30 PM</div>
-                </div>
-                <div class="hours-card">
-                    <div class="day">Sunday</div>
-                    <div class="time">1:00 PM – 8:30 PM</div>
-                </div>
+            <div class="hours-card">
+                <div class="day" data-i18n="hours.day2">Saturday</div>
+                <div class="time">1:00 PM – 9:30 PM</div>
+            </div>
+            <div class="hours-card">
+                <div class="day" data-i18n="hours.day3">Sunday</div>
+                <div class="time">1:00 PM – 8:30 PM</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ─── MENU ─── -->
-    <section id="menu" class="menu-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="chinese">我们的菜单</span>
-                Our <span class="accent">Menu</span>
-            </h2>
-            <div class="lantern-divider">
-                <span class="line"></span>
-                <span class="lantern">🏮</span>
-                <span class="line"></span>
-            </div>
-            <p class="section-subtitle">
-                Made fresh daily with the finest ingredients. Prices available upon request.
-            </p>
-
-            <div class="menu-note">
-                🌶️ <strong>Red = Spicy</strong> &bull; We can alter the spice according to your taste.
-                Dishes not on the menu can be prepared to your preferences.
-            </div>
-
-            <div class="menu-categories" id="menuCategories">
-                <button class="menu-category-btn active" data-category="lunch">Lunch Specials</button>
-                <button class="menu-category-btn" data-category="chefs">Chef's Suggestion</button>
-                <button class="menu-category-btn" data-category="combination">Combination Plates</button>
-                <button class="menu-category-btn" data-category="specialties">Specialities</button>
-                <button class="menu-category-btn" data-category="appetizers">Appetizers</button>
-                <button class="menu-category-btn" data-category="soups">Soups</button>
-                <button class="menu-category-btn" data-category="fried-rice">Fried Rice</button>
-                <button class="menu-category-btn" data-category="lo-mein">Lo Mein</button>
-                <button class="menu-category-btn" data-category="mai-fun">Mai Fun</button>
-                <button class="menu-category-btn" data-category="chow-mein">Chow Mein</button>
-                <button class="menu-category-btn" data-category="chop-suey">Chop Suey</button>
-                <button class="menu-category-btn" data-category="chicken-pork">Chicken or Pork</button>
-                <button class="menu-category-btn" data-category="beef">Beef</button>
-                <button class="menu-category-btn" data-category="seafood">Seafood</button>
-                <button class="menu-category-btn" data-category="vegetable">Vegetable</button>
-                <button class="menu-category-btn" data-category="egg-foo-young">Egg Foo Young</button>
-            </div>
-
-            <div class="menu-grid" id="menuGrid">
-                <!-- Items will be injected by JavaScript -->
-            </div>
+<!-- ─── MENU ─── -->
+<section id="menu" class="menu-section">
+    <div class="container">
+        <h2 class="section-title">
+            <span class="chinese" data-i18n="menu.chineseTitle">我们的菜单</span>
+            <span data-i18n="menu.titlePrefix">Our</span> <span class="accent" data-i18n="menu.titleAccent">Menu</span>
+        </h2>
+        <div class="lantern-divider">
+            <span class="line"></span>
+            <span class="lantern">🏮</span>
+            <span class="line"></span>
         </div>
-    </section>
+        <p class="section-subtitle" data-i18n="menu.subtitle">
+            Made fresh daily with the finest ingredients. Prices available upon request.
+        </p>
 
-    <!-- ─── CONTACT ─── -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="chinese" style="color:#d4a373;">联系我们</span>
-                Get in <span class="accent" style="color:#d4a373;">Touch</span>
-            </h2>
-            <div class="lantern-divider">
-                <span class="line" style="background: linear-gradient(90deg, transparent, #d4a373, transparent);"></span>
-                <span class="lantern">🏮</span>
-                <span class="line" style="background: linear-gradient(90deg, transparent, #d4a373, transparent);"></span>
-            </div>
-            <p class="section-subtitle">
-                Call ahead for take out — we'll have your order hot and ready when you arrive.
-            </p>
+        <div class="menu-note" data-i18n="menu.note">
+            🌶️ <strong>Red = Spicy</strong> &bull; We can alter the spice according to your taste.
+            Dishes not on the menu can be prepared to your preferences.
+        </div>
 
-            <div class="contact-info">
-                <div class="contact-item">
-                    <span class="label">📞 Call Us</span>
-                    <div class="value contact-phones">
-                        <a href="tel:+14122715122">(412) 271-5122</a>
-                        <a href="tel:+14122711899">(412) 271-1899</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <span class="label">📍 Visit Us</span>
-                    <span class="value">268 Yost Blvd, Pittsburgh, PA 15221</span>
+        <div class="menu-categories" id="menuCategories">
+            <!-- injected by JS -->
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+            <!-- Items injected by JavaScript -->
+        </div>
+    </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2 class="section-title">
+            <span class="chinese" style="color:#d4a373;" data-i18n="contact.chineseTitle">联系我们</span>
+            <span data-i18n="contact.titlePrefix">Get in</span> <span class="accent" style="color:#d4a373;" data-i18n="contact.titleAccent">Touch</span>
+        </h2>
+        <div class="lantern-divider">
+            <span class="line" style="background: linear-gradient(90deg, transparent, #d4a373, transparent);"></span>
+            <span class="lantern">🏮</span>
+            <span class="line" style="background: linear-gradient(90deg, transparent, #d4a373, transparent);"></span>
+        </div>
+        <p class="section-subtitle" data-i18n="contact.subtitle">
+            Call ahead for take out — we'll have your order hot and ready when you arrive.
+        </p>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <span class="label" data-i18n="contact.callLabel">📞 Call Us</span>
+                <div class="value contact-phones">
+                    <a href="tel:+14122715122">(412) 271-5122</a>
+                    <a href="tel:+14122711899">(412) 271-1899</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ─── FOOTER ─── -->
-    <footer>
-        <div class="container">
-            <div class="footer-brand">
-                <span class="chinese">珍珠</span> Zhen Choo
+            <div class="contact-item">
+                <span class="label" data-i18n="contact.visitLabel">📍 Visit Us</span>
+                <span class="value">268 Yost Blvd, Pittsburgh, PA 15221</span>
             </div>
-            <p>© 2026 Zhen Choo Chinese Restaurant &mdash; All rights reserved.</p>
-            <p style="font-size:0.75rem; margin-top:4px; color:#6b5a4e;">
-                Braddock Hills Shopping Center &bull; 268 Yost Blvd, Pittsburgh, PA 15221
-            </p>
-            <p style="font-size:0.7rem; margin-top:6px; color:#5a4a3e; letter-spacing:2px;">
-                真诚服务 · 家的味道
-            </p>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <!-- ─── JAVASCRIPT ─── -->
-    <script>
-        (function() {
-            // ── Mobile Nav Toggle ──
-            const toggle = document.getElementById('navToggle');
-            const nav = document.getElementById('navLinks');
-            toggle.addEventListener('click', () => {
-                nav.classList.toggle('open');
-            });
+<!-- ─── FOOTER ─── -->
+<footer>
+    <div class="container">
+        <div class="footer-brand">
+            <span class="chinese">珍珠</span> Zhen Choo
+        </div>
+        <p data-i18n="footer.copyright">© 2026 Zhen Choo Chinese Restaurant &mdash; All rights reserved.</p>
+        <p style="font-size:0.75rem; margin-top:4px; color:#6b5a4e;" data-i18n="footer.address">
+            Braddock Hills Shopping Center &bull; 268 Yost Blvd, Pittsburgh, PA 15221
+        </p>
+        <p style="font-size:0.7rem; margin-top:6px; color:#5a4a3e; letter-spacing:2px;" data-i18n="footer.tagline">
+            真诚服务 · 家的味道
+        </p>
+    </div>
+</footer>
 
-            nav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    nav.classList.remove('open');
-                });
-            });
-
-            // ── Full Menu Data ──
-            const menuData = [
-                // ── Appetizers ──
-                { id: 1, name: 'Shrimp Egg Roll', description: 'Crispy egg roll filled with shrimp and vegetables.', category: 'appetizers' },
-                { id: 2, name: 'Pork / Chicken Egg Roll', description: 'Classic egg roll with your choice of pork or chicken.', category: 'appetizers' },
-                { id: 3, name: 'Vegetable Spring Roll', description: 'Light and crispy spring roll filled with fresh vegetables.', category: 'appetizers', badge: 'Vegetarian' },
-                { id: 4, name: 'Chicken on a Stick', description: 'Tender grilled chicken skewers served with dipping sauce.', category: 'appetizers' },
-                { id: 5, name: 'Boneless Spare Ribs', description: 'Tender, flavorful boneless ribs with a sweet glaze.', category: 'appetizers' },
-                { id: 6, name: 'Steam Dumplings (8)', description: 'Delicate steamed dumplings with a savory filling.', category: 'appetizers' },
-                { id: 7, name: 'Fried Dumplings (8)', description: 'Crispy pan-fried dumplings with a golden bottom.', category: 'appetizers' },
-                { id: 8, name: 'Fried Wonton (12)', description: 'Crispy wontons served with sweet and sour sauce.', category: 'appetizers' },
-                { id: 9, name: 'Shrimp Toast (4)', description: 'Golden-fried toast topped with seasoned shrimp paste.', category: 'appetizers' },
-                { id: 10, name: 'Fried Cheese Wonton (Crab Rangoon)', description: 'Crispy wontons filled with cream cheese and crab.', category: 'appetizers' },
-                { id: 11, name: 'Noodle with Sesame Paste', description: 'Cold noodles tossed in a rich sesame paste sauce.', category: 'appetizers', badge: 'Vegetarian' },
-                { id: 12, name: 'Spicy Wonton', description: 'Wontons in a spicy chili oil sauce.', category: 'appetizers', badge: 'Spicy' },
-                { id: 13, name: 'Pu Pu Platter (for 2)', description: 'A generous platter of assorted appetizers.', category: 'appetizers' },
-
-                // ── Soups ──
-                { id: 14, name: 'Wonton Soup', description: 'Classic wonton soup with savory broth and tender wontons.', category: 'soups' },
-                { id: 15, name: 'Egg Drop Soup', description: 'Silky egg ribbons in a light, savory broth.', category: 'soups', badge: 'Vegetarian' },
-                { id: 16, name: 'Wonton Egg Drop Soup', description: 'A delicious combination of wonton and egg drop soups.', category: 'soups' },
-                { id: 17, name: 'Hot & Sour Soup', description: 'A tangy, spicy soup with tofu, mushroom, and bamboo shoots.', category: 'soups', badge: 'Spicy' },
-                { id: 18, name: 'Chicken Noodle or Rice Soup', description: 'Hearty soup with chicken and your choice of noodle or rice.', category: 'soups' },
-                { id: 19, name: 'Chinese Vegetable Soup', description: 'A light broth with fresh seasonal vegetables.', category: 'soups', badge: 'Vegetarian' },
-                { id: 20, name: 'House Special Soup', description: 'A rich soup with a medley of meats and vegetables.', category: 'soups' },
-                { id: 21, name: 'Chicken & Corn Soup', description: 'Smooth and creamy soup with chicken and sweet corn.', category: 'soups' },
-
-                // ── Vegetable ──
-                { id: 22, name: 'Mixed Vegetable', description: 'Fresh garden vegetables stir-fried to perfection.', category: 'vegetable', badge: 'Vegetarian' },
-                { id: 23, name: 'Sauteed Broccoli', description: 'Fresh broccoli lightly sautéed in a savory sauce.', category: 'vegetable', badge: 'Vegetarian' },
-                { id: 24, name: 'Broccoli with Garlic Sauce', description: 'Broccoli tossed in a fragrant garlic sauce.', category: 'vegetable', badge: 'Vegetarian' },
-                { id: 25, name: 'Bean Curd with Szechuan Style', description: 'Tofu prepared in bold Szechuan flavors.', category: 'vegetable', badge: 'Spicy' },
-                { id: 26, name: 'Ma Po Tofu', description: 'Silken tofu in a spicy bean-based sauce with chili oil.', category: 'vegetable', badge: 'Spicy' },
-                { id: 27, name: 'House Special Bean Curd', description: 'Tofu with mixed vegetables in a savory sauce.', category: 'vegetable', badge: 'Vegetarian' },
-                { id: 28, name: "General Tso's Bean Curd", description: 'Crispy tofu in a sweet and spicy General Tso sauce.', category: 'vegetable' },
-                { id: 29, name: 'Moo Shu Vegetable (w/4 Pancakes)', description: 'Stir-fried vegetables served with pancakes and hoisin sauce.', category: 'vegetable', badge: 'Vegetarian' },
-
-                // ── Egg Foo Young ──
-                { id: 30, name: 'Vegetable Egg Foo Young (3)', description: 'Fluffy egg omelet with fresh vegetables.', category: 'egg-foo-young', badge: 'Vegetarian' },
-                { id: 31, name: 'Chicken / Pork Egg Foo Young (3)', description: 'Egg omelet with your choice of chicken or pork.', category: 'egg-foo-young' },
-                { id: 32, name: 'Shrimp / Beef Egg Foo Young (3)', description: 'Egg omelet with shrimp or tender beef.', category: 'egg-foo-young' },
-                { id: 33, name: 'House Egg Foo Young (3)', description: 'A combination of meats and vegetables in a fluffy egg omelet.', category: 'egg-foo-young' },
-
-                // ── Combination Plates ──
-                { id: 34, name: 'Chicken or Pork Chow Mein', description: 'Classic chow mein with your choice of meat.', category: 'combination' },
-                { id: 35, name: 'Chicken with Mixed Veg', description: 'Chicken stir-fried with fresh mixed vegetables.', category: 'combination' },
-                { id: 36, name: 'Chicken with Broccoli', description: 'Tender chicken with crisp broccoli in a savory sauce.', category: 'combination' },
-                { id: 37, name: 'Shrimp Chow Mein', description: 'Chow mein with succulent shrimp and vegetables.', category: 'combination' },
-                { id: 38, name: 'Chicken Egg Foo Young', description: 'A classic egg foo young with chicken.', category: 'combination' },
-                { id: 39, name: 'Chicken or Pork Lo Mein', description: 'Soft noodles stir-fried with your choice of meat.', category: 'combination' },
-                { id: 40, name: 'Sweet & Sour Chicken', description: 'Crispy chicken with a sweet and tangy sauce.', category: 'combination' },
-                { id: 41, name: 'Moo Goo Gai Pan', description: 'Chicken with mushrooms and vegetables in a light sauce.', category: 'combination' },
-                { id: 42, name: 'Pepper Steak with Onion', description: 'Tender beef with bell peppers and onions.', category: 'combination' },
-                { id: 43, name: 'Shrimp with Lobster Sauce', description: 'Jumbo shrimp in a savory egg-based sauce.', category: 'combination' },
-                { id: 44, name: 'Shrimp or Beef with Mixed Veg', description: 'Your choice of shrimp or beef with mixed vegetables.', category: 'combination' },
-                { id: 45, name: 'Beef or Shrimp with Broccoli', description: 'Choice of beef or shrimp with fresh broccoli.', category: 'combination' },
-                { id: 46, name: 'Beef or Shrimp with Lo Mein', description: 'Lo Mein with your choice of beef or shrimp.', category: 'combination' },
-                { id: 47, name: 'Kung Pao Chicken', description: 'Diced chicken with peanuts and chili peppers in a bold sauce.', category: 'combination', badge: 'Spicy' },
-                { id: 48, name: "General Tso's Chicken", description: 'Crispy chicken in a sweet and spicy sauce.', category: 'combination', badge: 'Spicy' },
-                { id: 49, name: 'Sesame Chicken', description: 'Crispy chicken with a sweet sauce and sesame seeds.', category: 'combination' },
-                { id: 50, name: 'Boneless Spare Ribs', description: 'Tender boneless ribs with a sweet glaze.', category: 'combination' },
-
-                // ── Lunch Specials ──
-                { id: 51, name: 'Chicken or Pork Chow Mein', description: 'Classic chow mein with your choice of meat.', category: 'lunch' },
-                { id: 52, name: 'Shrimp Chow Mein', description: 'Chow mein with shrimp and vegetables.', category: 'lunch' },
-                { id: 53, name: 'Shrimp and Chicken', description: 'A delicious combination of shrimp and chicken.', category: 'lunch' },
-                { id: 54, name: 'Roast Pork with Broccoli', description: 'Roast pork with crisp broccoli in a savory sauce.', category: 'lunch' },
-                { id: 55, name: 'Chicken with Broccoli', description: 'Chicken and broccoli in a classic sauce.', category: 'lunch' },
-                { id: 56, name: 'Shrimp with Lobster Sauce', description: 'Shrimp in a rich lobster sauce.', category: 'lunch' },
-                { id: 57, name: 'Chicken or Pork with Mixed Veg', description: 'Your choice of meat with fresh mixed vegetables.', category: 'lunch' },
-                { id: 58, name: 'Shrimp or Beef with Mixed Veg', description: 'Choice of shrimp or beef with mixed vegetables.', category: 'lunch' },
-                { id: 59, name: 'Pepper Steak with Onion', description: 'Beef with bell peppers and onions.', category: 'lunch' },
-
-                // ── Chicken & Pork ──
-                { id: 60, name: 'Chicken / Pork with Broccoli', description: 'Your choice of meat with fresh broccoli.', category: 'chicken-pork' },
-                { id: 61, name: 'Chicken / Pork with Mixed Vegetables', description: 'Choice of meat with mixed vegetables.', category: 'chicken-pork' },
-                { id: 62, name: 'Moo Goo Gai Pan', description: 'Chicken with mushrooms and vegetables.', category: 'chicken-pork' },
-                { id: 63, name: 'Chicken with Cashew Nuts', description: 'Chicken stir-fried with cashews and vegetables.', category: 'chicken-pork' },
-                { id: 64, name: 'Double Cooked Pork', description: 'Pork cooked twice for a rich, savory flavor.', category: 'chicken-pork' },
-                { id: 65, name: 'Curry Chicken with Onion', description: 'Chicken in a fragrant curry sauce with onions.', category: 'chicken-pork' },
-                { id: 66, name: 'Kung Pao Chicken', description: 'Chicken with peanuts and chili peppers.', category: 'chicken-pork', badge: 'Spicy' },
-                { id: 67, name: 'Chicken / Pork with Garlic Sauce', description: 'Choice of meat in a savory garlic sauce.', category: 'chicken-pork' },
-                { id: 68, name: 'Hunan Chicken / Pork', description: 'Spicy Hunan-style preparation with vegetables.', category: 'chicken-pork', badge: 'Spicy' },
-                { id: 69, name: 'Chicken / Pork with Szechuan Style', description: 'Bold Szechuan flavors with your choice of meat.', category: 'chicken-pork', badge: 'Spicy' },
-                { id: 70, name: 'Sweet & Sour Chicken', description: 'Classic sweet and sour chicken.', category: 'chicken-pork' },
-                { id: 71, name: 'Chicken & Shrimp', description: 'A delicious combination of chicken and shrimp.', category: 'chicken-pork' },
-                { id: 72, name: 'Moo Shu Chicken / Pork (w/4 Pancakes)', description: 'Stir-fried with vegetables and served with pancakes.', category: 'chicken-pork' },
-
-                // ── Beef ──
-                { id: 73, name: 'Beef with Broccoli', description: 'Tender beef with fresh broccoli in a savory sauce.', category: 'beef' },
-                { id: 74, name: 'Beef with Mixed Vegetables', description: 'Beef stir-fried with fresh mixed vegetables.', category: 'beef' },
-                { id: 75, name: 'Pepper Steak with Onion', description: 'Beef with bell peppers and onions.', category: 'beef' },
-                { id: 76, name: 'Curry Beef with Onion', description: 'Beef in a fragrant curry sauce with onions.', category: 'beef' },
-                { id: 77, name: 'Kung Pao Beef', description: 'Beef with peanuts and chili peppers.', category: 'beef', badge: 'Spicy' },
-                { id: 78, name: 'Hunan Beef', description: 'Spicy Hunan-style beef with vegetables.', category: 'beef', badge: 'Spicy' },
-                { id: 79, name: 'Beef with Garlic Sauce', description: 'Beef in a savory garlic sauce.', category: 'beef' },
-                { id: 80, name: 'Mongolian Beef', description: 'Sliced beef with scallions and onions in a rich sauce.', category: 'beef' },
-                { id: 81, name: 'Hot & Spicy Beef', description: 'Beef prepared with chili and bold spices.', category: 'beef', badge: 'Spicy' },
-                { id: 82, name: 'Beef with Szechuan Style', description: 'Beef in a bold Szechuan sauce.', category: 'beef', badge: 'Spicy' },
-
-                // ── Seafood ──
-                { id: 83, name: 'Shrimp with Broccoli', description: 'Shrimp with crisp broccoli in a savory sauce.', category: 'seafood' },
-                { id: 84, name: 'Shrimp with Mixed Vegetable', description: 'Shrimp stir-fried with fresh vegetables.', category: 'seafood' },
-                { id: 85, name: 'Shrimp Lobster Sauce', description: 'Shrimp in a savory egg-based lobster sauce.', category: 'seafood' },
-                { id: 86, name: 'Kung Pao Shrimp', description: 'Shrimp with peanuts and chili peppers.', category: 'seafood', badge: 'Spicy' },
-                { id: 87, name: 'Shrimp with Garlic Sauce', description: 'Shrimp in a fragrant garlic sauce.', category: 'seafood' },
-                { id: 88, name: 'Hunan Shrimp', description: 'Spicy Hunan-style shrimp with vegetables.', category: 'seafood', badge: 'Spicy' },
-                { id: 89, name: 'Curry Shrimp', description: 'Shrimp in a rich curry sauce.', category: 'seafood' },
-                { id: 90, name: 'Shrimp with Szechuan Style', description: 'Shrimp prepared with bold Szechuan spices.', category: 'seafood', badge: 'Spicy' },
-                { id: 91, name: 'Sweet and Sour Shrimp', description: 'Crispy shrimp with a sweet and tangy sauce.', category: 'seafood' },
-                { id: 92, name: 'Scallop with Mixed Chinese Vegetable', description: 'Fresh scallops with mixed vegetables.', category: 'seafood' },
-                { id: 93, name: 'Moo Shu Shrimp (w/4 Pancakes)', description: 'Shrimp with vegetables and pancakes.', category: 'seafood' },
-
-                // ── Fried Rice ──
-                { id: 94, name: 'Vegetable Fried Rice', description: 'Wok-fried rice with fresh vegetables and egg.', category: 'fried-rice', badge: 'Vegetarian' },
-                { id: 95, name: 'Pork or Chicken Fried Rice', description: 'Fried rice with your choice of pork or chicken.', category: 'fried-rice' },
-                { id: 96, name: 'Shrimp Fried Rice', description: 'Fried rice with succulent shrimp.', category: 'fried-rice' },
-                { id: 97, name: 'Beef Fried Rice', description: 'Fried rice with tender beef.', category: 'fried-rice' },
-                { id: 98, name: 'House Special Fried Rice', description: 'A combination of meats in flavorful fried rice.', category: 'fried-rice' },
-
-                // ── Lo Mein ──
-                { id: 99, name: 'Vegetable Lo Mein', description: 'Soft noodles with fresh vegetables.', category: 'lo-mein', badge: 'Vegetarian' },
-                { id: 100, name: 'Pork Lo Mein', description: 'Soft noodles with pork and vegetables.', category: 'lo-mein' },
-                { id: 101, name: 'Chicken Lo Mein', description: 'Soft noodles with chicken and vegetables.', category: 'lo-mein' },
-                { id: 102, name: 'Beef Lo Mein', description: 'Soft noodles with beef and vegetables.', category: 'lo-mein' },
-                { id: 103, name: 'Shrimp Lo Mein', description: 'Soft noodles with shrimp and vegetables.', category: 'lo-mein' },
-                { id: 104, name: 'House Special Lo Mein', description: 'A combination of meats in soft noodles.', category: 'lo-mein' },
-
-                // ── Mai Fun ──
-                { id: 105, name: 'Vegetable Mai Fun', description: 'Rice noodles with fresh vegetables.', category: 'mai-fun', badge: 'Vegetarian' },
-                { id: 106, name: 'Pork Mai Fun', description: 'Rice noodles with pork and vegetables.', category: 'mai-fun' },
-                { id: 107, name: 'Chicken Mai Fun', description: 'Rice noodles with chicken and vegetables.', category: 'mai-fun' },
-                { id: 108, name: 'Beef Mai Fun', description: 'Rice noodles with beef and vegetables.', category: 'mai-fun' },
-                { id: 109, name: 'Shrimp Mai Fun', description: 'Rice noodles with shrimp and vegetables.', category: 'mai-fun' },
-                { id: 110, name: 'House Special Mai Fun', description: 'A combination of meats in rice noodles.', category: 'mai-fun' },
-                { id: 111, name: 'Singapore Mai Fun', description: 'Rice noodles with shrimp, BBQ pork, and curry spice.', category: 'mai-fun', badge: 'Spicy' },
-
-                // ── Chow Mein ──
-                { id: 112, name: 'Vegetable Chow Mein', description: 'Crispy noodles with fresh vegetables.', category: 'chow-mein', badge: 'Vegetarian' },
-                { id: 113, name: 'Chicken Chow Mein', description: 'Crispy noodles with chicken and vegetables.', category: 'chow-mein' },
-                { id: 114, name: 'Pork Chow Mein', description: 'Crispy noodles with pork and vegetables.', category: 'chow-mein' },
-                { id: 115, name: 'Shrimp Chow Mein', description: 'Crispy noodles with shrimp and vegetables.', category: 'chow-mein' },
-                { id: 116, name: 'Beef Chow Mein', description: 'Crispy noodles with beef and vegetables.', category: 'chow-mein' },
-
-                // ── Chop Suey ──
-                { id: 117, name: 'Vegetable Chop Suey', description: 'Mixed vegetables in a savory chop suey sauce.', category: 'chop-suey', badge: 'Vegetarian' },
-                { id: 118, name: 'Chicken Chop Suey', description: 'Chicken and vegetables in chop suey sauce.', category: 'chop-suey' },
-                { id: 119, name: 'Pork Chop Suey', description: 'Pork and vegetables in chop suey sauce.', category: 'chop-suey' },
-                { id: 120, name: 'Shrimp Chop Suey', description: 'Shrimp and vegetables in chop suey sauce.', category: 'chop-suey' },
-                { id: 121, name: 'Beef Chop Suey', description: 'Beef and vegetables in chop suey sauce.', category: 'chop-suey' },
-
-                // ── Specialities ──
-                { id: 122, name: 'Fried Chicken Wings', description: 'Crispy fried chicken wings.', category: 'specialties' },
-                { id: 123, name: 'Fried Jumbo Shrimp', description: 'Large crispy fried shrimp.', category: 'specialties' },
-                { id: 124, name: 'Fried Baby Shrimp', description: 'Crispy fried baby shrimp.', category: 'specialties' },
-                { id: 125, name: 'Fried Scallops', description: 'Crispy fried scallops.', category: 'specialties' },
-                { id: 126, name: 'Fried Chicken Nuggets', description: 'Crispy bite-sized chicken nuggets.', category: 'specialties' },
-
-                // ── Chef's Suggestions ──
-                { id: 127, name: 'Happy Family', description: 'A mix of scallops, shrimp, roast pork, beef, chicken, and vegetables in brown sauce.', category: 'chefs' },
-                { id: 128, name: 'Seafood Delight', description: 'Shrimp and scallops with mixed vegetables in a light white sauce.', category: 'chefs' },
-                { id: 129, name: 'Triple Delight', description: 'Shrimp, beef, and chicken with broccoli, mushroom, and baby corn in brown sauce.', category: 'chefs' },
-                { id: 130, name: "General Tso's Chicken", description: 'Chicken, lightly breaded and deep fried, with mixed vegetables in a spicy sweet brown sauce.', category: 'chefs', badge: 'Spicy' },
-                { id: 131, name: "General Tso's Shrimp or Beef", description: 'Shrimp or beef breaded and deep fried, with mixed vegetables in a spicy sweet brown sauce.', category: 'chefs', badge: 'Spicy' },
-                { id: 132, name: 'Capital Chicken', description: 'Tender chicken breast with broccoli, mushroom, green pepper, and baby corn in spicy brown sauce.', category: 'chefs', badge: 'Spicy' },
-                { id: 133, name: 'Honey Chicken', description: 'Golden fried chicken smothered with special honey sauce.', category: 'chefs' },
-                { id: 134, name: 'Hunan Delicacy', description: 'Shrimp and beef in two different spicy sauces.', category: 'chefs', badge: 'Spicy' },
-                { id: 135, name: 'Sesame Chicken', description: 'Chicken, lightly breaded and deep fried, with mixed vegetables in spicy sweet brown sauce with sesame seeds.', category: 'chefs' },
-                { id: 136, name: 'Boneless Chicken', description: 'White meat chicken, deep fried, served with mixed vegetables.', category: 'chefs' },
-                { id: 137, name: 'Dragon & Phoenix', description: 'Shrimp with mixed vegetables in a light sauce, and chunks of chicken in a spicy sweet brown sauce.', category: 'chefs' },
-                { id: 138, name: 'Perfect Match', description: 'Fresh scallops and shrimp sautéed with vegetables in garlic sauce.', category: 'chefs' },
-                { id: 139, name: 'Four Season', description: 'Jumbo shrimp, chicken, pork, and beef with mixed vegetables.', category: 'chefs' },
-                { id: 140, name: 'Beef & Scallops', description: 'Sliced tender beef and scallops with mixed vegetables.', category: 'chefs' },
-                { id: 141, name: 'Orange Chicken', description: 'Crispy chicken in a tangy orange sauce.', category: 'chefs' },
-                { id: 142, name: 'Orange Beef or Shrimp', description: 'Your choice of beef or shrimp in a tangy orange sauce.', category: 'chefs' },
-                { id: 143, name: 'Hot and Spicy Shrimp', description: 'Shrimp prepared with bold chili and spices.', category: 'chefs', badge: 'Spicy' },
-                { id: 144, name: 'Lemon Chicken', description: 'Crispy chicken in a bright lemon sauce.', category: 'chefs' },
-            ];
-
-            // ── Render Menu ──
-            const grid = document.getElementById('menuGrid');
-            const categoryBtns = document.querySelectorAll('.menu-category-btn');
-
-            function getBadgeClass(badge) {
-                if (!badge) return '';
-                if (badge === 'Spicy') return 'spicy';
-                if (badge === 'Vegetarian') return 'veg';
-                return '';
+<!-- ─── JAVASCRIPT ─── -->
+<script>
+    (function() {
+        // ── Translation Data ──
+        const TRANSLATIONS = {
+            en: {
+                'nav.about': 'Our Story',
+                'nav.location': 'Location',
+                'nav.hours': 'Hours',
+                'nav.menu': 'Menu',
+                'nav.call': 'Call Us',
+                'hero.badge': 'Take Out Only',
+                'hero.subtitle': 'Authentic Szechuan • Hunan • Mandarin',
+                'hero.tagline': 'Where every dish tells a story of heritage and culinary craftsmanship. Made fresh with vegetable oil • low salt available.',
+                'hero.btn1': 'View Full Menu',
+                'hero.btn2': 'Call us to order',
+                'about.chineseTitle': '我们的故事',
+                'about.titlePrefix': 'Our',
+                'about.titleAccent': 'Story',
+                'about.p1': 'Zhen Choo is more than a restaurant – it\'s our <span class="highlight">home</span>. Locally owned and operated by a <span class="highlight">dedicated couple</span>, we opened our doors in <span class="highlight">2003</span> with a simple dream: to bring the true taste of authentic Chinese home cooking to the Pittsburgh community.',
+                'about.p2': 'For <span class="highlight">over 20 years</span>, we\'ve had the privilege of serving generations of families, sharing meals, and creating lasting memories. Through the unprecedented challenges of COVID, we worked tirelessly to keep our doors open and our neighbors fed, never compromising on the quality or authenticity of our dishes.',
+                'about.p3': 'Our commitment remains the same today – to provide a <span class="highlight">warm, inviting environment</span> where every guest feels like family, and every bite tastes like tradition. <br> <span style="font-family: \'Ma Shan Zheng\', cursive; font-size: 1.4rem; color: #c0392b; display: inline-block; margin-top: 8px;">欢迎回家</span> <span style="display: block; font-size: 0.9rem; color: #6b4c3a; font-style: italic;">— Welcome home</span>',
+                'about.welcome': '— Welcome home',
+                'about.tag1': 'Since 2003',
+                'about.tag2': 'Family Owned',
+                'about.tag3': 'Authentic Recipes',
+                'about.tag4': 'Vegetarian Options',
+                'about.tag5': 'Local & Proud',
+                'location.chineseTitle': '找到我们',
+                'location.titlePrefix': 'Find',
+                'location.titleAccent': 'Us',
+                'location.subtitle': 'Located in the Braddock Hills Shopping Center, we\'re here to serve you.',
+                'location.cardTitle': '📍 Our Location',
+                'location.shoppingCenter': 'Braddock Hills Shopping Center',
+                'location.callLabel': '📞 Call to Order',
+                'location.priceLabel': '💰 Price Range',
+                'location.price': '$10 – $20 per person',
+                'location.serviceNote': '<strong>Service options:</strong> Take Out Only • No Reservations • Vegetarian options available',
+                'hours.chineseTitle': '营业时间',
+                'hours.titlePrefix': 'Hours of',
+                'hours.titleAccent': 'Operation',
+                'hours.subtitle': 'Open 7 days a week. Come enjoy our warm hospitality and delicious cuisine.',
+                'hours.day1': 'Monday – Friday',
+                'hours.day2': 'Saturday',
+                'hours.day3': 'Sunday',
+                'menu.chineseTitle': '我们的菜单',
+                'menu.titlePrefix': 'Our',
+                'menu.titleAccent': 'Menu',
+                'menu.subtitle': 'Made fresh daily with the finest ingredients. Prices available upon request.',
+                'menu.note': '🌶️ <strong>Red = Spicy</strong> • We can alter the spice according to your taste. Dishes not on the menu can be prepared to your preferences.',
+                'contact.chineseTitle': '联系我们',
+                'contact.titlePrefix': 'Get in',
+                'contact.titleAccent': 'Touch',
+                'contact.subtitle': 'Call ahead for take out — we\'ll have your order hot and ready when you arrive.',
+                'contact.callLabel': '📞 Call Us',
+                'contact.visitLabel': '📍 Visit Us',
+                'footer.copyright': '© 2026 Zhen Choo Chinese Restaurant — All rights reserved.',
+                'footer.address': 'Braddock Hills Shopping Center • 268 Yost Blvd, Pittsburgh, PA 15221',
+                'footer.tagline': '真诚服务 · 家的味道',
+                // Category names
+                'cat.lunch': 'Lunch Specials',
+                'cat.chefs': 'Chef\'s Suggestion',
+                'cat.combination': 'Combination Plates',
+                'cat.specialties': 'Specialities',
+                'cat.appetizers': 'Appetizers',
+                'cat.soups': 'Soups',
+                'cat.fried-rice': 'Fried Rice',
+                'cat.lo-mein': 'Lo Mein',
+                'cat.mai-fun': 'Mai Fun',
+                'cat.chow-mein': 'Chow Mein',
+                'cat.chop-suey': 'Chop Suey',
+                'cat.chicken-pork': 'Chicken or Pork',
+                'cat.beef': 'Beef',
+                'cat.seafood': 'Seafood',
+                'cat.vegetable': 'Vegetable',
+                'cat.egg-foo-young': 'Egg Foo Young',
+            },
+            zh: {
+                'nav.about': '关于我们',
+                'nav.location': '地址',
+                'nav.hours': '营业时间',
+                'nav.menu': '菜单',
+                'nav.call': '联系我们',
+                'hero.badge': '仅限外卖',
+                'hero.subtitle': '正宗川菜 • 湘菜 • 北方菜',
+                'hero.tagline': '每一道菜都讲述着传统与烹饪技艺的故事。选用新鲜蔬菜油烹制 • 可提供低盐选项。',
+                'hero.btn1': '查看完整菜单',
+                'hero.btn2': '电话订购',
+                'about.chineseTitle': '我们的故事',
+                'about.titlePrefix': '我们的',
+                'about.titleAccent': '故事',
+                'about.p1': '珍珠不仅仅是一家餐厅——它是我们的<span class="highlight">家</span>。由一对<span class="highlight">夫妇</span>本地拥有和经营，我们在<span class="highlight">2003年</span>开业，怀揣着一个简单的梦想：将正宗中国家庭烹饪的纯正味道带给匹兹堡社区。',
+                'about.p2': '二十多年来，我们有幸为一代又一代的家庭服务，共享美食，创造持久的回忆。面对疫情带来的前所未有的挑战，我们不懈努力，保持营业，为邻里提供食物，从未在菜肴的质量和正宗性上妥协。',
+                'about.p3': '今天，我们的承诺依然不变——提供一个<span class="highlight">温馨、宜人的环境</span>，让每一位客人都感到宾至如归，每一口都尝到传统的味道。<br> <span style="font-family: \'Ma Shan Zheng\', cursive; font-size: 1.4rem; color: #c0392b; display: inline-block; margin-top: 8px;">欢迎回家</span> <span style="display: block; font-size: 0.9rem; color: #6b4c3a; font-style: italic;">— 欢迎回家</span>',
+                'about.welcome': '— 欢迎回家',
+                'about.tag1': '始于2003年',
+                'about.tag2': '家族经营',
+                'about.tag3': '正宗配方',
+                'about.tag4': '素食选项',
+                'about.tag5': '本地自豪',
+                'location.chineseTitle': '找到我们',
+                'location.titlePrefix': '找到',
+                'location.titleAccent': '我们',
+                'location.subtitle': '位于布拉多克山购物中心，我们随时为您服务。',
+                'location.cardTitle': '📍 我们的地址',
+                'location.shoppingCenter': '布拉多克山购物中心',
+                'location.callLabel': '📞 电话订购',
+                'location.priceLabel': '💰 价格范围',
+                'location.price': '每人 $10 – $20',
+                'location.serviceNote': '<strong>服务方式：</strong>仅限外卖 • 无需预订 • 提供素食选项',
+                'hours.chineseTitle': '营业时间',
+                'hours.titlePrefix': '营业',
+                'hours.titleAccent': '时间',
+                'hours.subtitle': '每周七天营业。欢迎来享用我们的热情服务和美味佳肴。',
+                'hours.day1': '周一 – 周五',
+                'hours.day2': '周六',
+                'hours.day3': '周日',
+                'menu.chineseTitle': '我们的菜单',
+                'menu.titlePrefix': '我们的',
+                'menu.titleAccent': '菜单',
+                'menu.subtitle': '每日新鲜烹制，选用上等食材。价格请咨询。',
+                'menu.note': '🌶️ <strong>红色 = 辣</strong> • 我们可以根据您的口味调整辣度。菜单上没有的菜肴也可以根据您的喜好制作。',
+                'contact.chineseTitle': '联系我们',
+                'contact.titlePrefix': '联系',
+                'contact.titleAccent': '我们',
+                'contact.subtitle': '提前电话预订外卖——您的订单将在您到达时热腾腾地准备好。',
+                'contact.callLabel': '📞 电话',
+                'contact.visitLabel': '📍 地址',
+                'footer.copyright': '© 2026 珍珠中餐厅 — 保留所有权利。',
+                'footer.address': '布拉多克山购物中心 • 268 Yost Blvd, Pittsburgh, PA 15221',
+                'footer.tagline': '真诚服务 · 家的味道',
+                // Category names
+                'cat.lunch': '午餐特惠',
+                'cat.chefs': '大厨推荐',
+                'cat.combination': '套餐',
+                'cat.specialties': '特色菜',
+                'cat.appetizers': '开胃菜',
+                'cat.soups': '汤类',
+                'cat.fried-rice': '炒饭',
+                'cat.lo-mein': '捞面',
+                'cat.mai-fun': '米粉',
+                'cat.chow-mein': '炒面',
+                'cat.chop-suey': '杂碎',
+                'cat.chicken-pork': '鸡肉或猪肉',
+                'cat.beef': '牛肉',
+                'cat.seafood': '海鲜',
+                'cat.vegetable': '蔬菜',
+                'cat.egg-foo-young': '芙蓉蛋',
             }
+        };
 
-            function renderMenu(category = 'lunch') {
-                const filtered = category === 'all' ?
-                    menuData :
-                    menuData.filter(item => item.category === category);
+        // ── Menu Data (bilingual) ──
+        const MENU_DATA = [
+            // ── Appetizers ──
+            { id: 1, name_en: 'Shrimp Egg Roll', name_zh: '虾仁春卷', description_en: 'Crispy egg roll filled with shrimp and vegetables.',
+                description_zh: '酥脆春卷，内馅为虾仁和蔬菜。', category: 'appetizers' },
+            { id: 2, name_en: 'Pork / Chicken Egg Roll', name_zh: '猪肉/鸡肉春卷', description_en: 'Classic egg roll with your choice of pork or chicken.',
+                description_zh: '经典春卷，可选猪肉或鸡肉。', category: 'appetizers' },
+            { id: 3, name_en: 'Vegetable Spring Roll', name_zh: '素春卷', description_en: 'Light and crispy spring roll filled with fresh vegetables.',
+                description_zh: '清爽酥脆的春卷，内馅为新鲜蔬菜。', category: 'appetizers', badge: 'Vegetarian' },
+            { id: 4, name_en: 'Chicken on a Stick', name_zh: '烤鸡肉串', description_en: 'Tender grilled chicken skewers served with dipping sauce.',
+                description_zh: '嫩滑的烤鸡肉串，配蘸酱。', category: 'appetizers' },
+            { id: 5, name_en: 'Boneless Spare Ribs', name_zh: '无骨排骨', description_en: 'Tender, flavorful boneless ribs with a sweet glaze.',
+                description_zh: '鲜嫩多汁的无骨排骨，裹有甜味酱汁。', category: 'appetizers' },
+            { id: 6, name_en: 'Steam Dumplings (8)', name_zh: '蒸饺（8个）', description_en: 'Delicate steamed dumplings with a savory filling.',
+                description_zh: '精致蒸饺，内馅鲜美。', category: 'appetizers' },
+            { id: 7, name_en: 'Fried Dumplings (8)', name_zh: '煎饺（8个）', description_en: 'Crispy pan-fried dumplings with a golden bottom.',
+                description_zh: '香脆煎饺，底部金黄。', category: 'appetizers' },
+            { id: 8, name_en: 'Fried Wonton (12)', name_zh: '炸云吞（12个）', description_en: 'Crispy wontons served with sweet and sour sauce.',
+                description_zh: '酥脆云吞，配甜酸酱。', category: 'appetizers' },
+            { id: 9, name_en: 'Shrimp Toast (4)', name_zh: '虾多士（4片）', description_en: 'Golden-fried toast topped with seasoned shrimp paste.',
+                description_zh: '金黄炸吐司，上层为调味虾酱。', category: 'appetizers' },
+            { id: 10, name_en: 'Fried Cheese Wonton (Crab Rangoon)', name_zh: '炸芝士云吞（蟹角）', description_en: 'Crispy wontons filled with cream cheese and crab.',
+                description_zh: '酥脆云吞，内馅为奶油芝士和蟹肉。', category: 'appetizers' },
+            { id: 11, name_en: 'Noodle with Sesame Paste', name_zh: '芝麻酱拌面', description_en: 'Cold noodles tossed in a rich sesame paste sauce.',
+                description_zh: '凉面拌以浓郁芝麻酱。', category: 'appetizers', badge: 'Vegetarian' },
+            { id: 12, name_en: 'Spicy Wonton', name_zh: '红油抄手', description_en: 'Wontons in a spicy chili oil sauce.',
+                description_zh: '云吞配香辣红油。', category: 'appetizers', badge: 'Spicy' },
+            { id: 13, name_en: 'Pu Pu Platter (for 2)', name_zh: '大拼盘（两人份）', description_en: 'A generous platter of assorted appetizers.',
+                description_zh: '丰盛的各式开胃菜拼盘。', category: 'appetizers' },
 
-                if (filtered.length === 0) {
-                    grid.innerHTML =
-                        `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#6b4c3a; font-style:italic;">No items in this category</div>`;
-                    return;
-                }
+            // ── Soups ──
+            { id: 14, name_en: 'Wonton Soup', name_zh: '云吞汤', description_en: 'Classic wonton soup with savory broth and tender wontons.',
+                description_zh: '经典云吞汤，汤鲜味美。', category: 'soups' },
+            { id: 15, name_en: 'Egg Drop Soup', name_zh: '蛋花汤', description_en: 'Silky egg ribbons in a light, savory broth.',
+                description_zh: '丝滑蛋花在清淡鲜美的汤中。', category: 'soups', badge: 'Vegetarian' },
+            { id: 16, name_en: 'Wonton Egg Drop Soup', name_zh: '云吞蛋花汤', description_en: 'A delicious combination of wonton and egg drop soups.',
+                description_zh: '云吞和蛋花汤的美味组合。', category: 'soups' },
+            { id: 17, name_en: 'Hot & Sour Soup', name_zh: '酸辣汤', description_en: 'A tangy, spicy soup with tofu, mushroom, and bamboo shoots.',
+                description_zh: '酸辣开胃的汤，含豆腐、蘑菇和笋片。', category: 'soups', badge: 'Spicy' },
+            { id: 18, name_en: 'Chicken Noodle or Rice Soup', name_zh: '鸡肉面/饭汤', description_en: 'Hearty soup with chicken and your choice of noodle or rice.',
+                description_zh: '丰盛的鸡汤，可选面或饭。', category: 'soups' },
+            { id: 19, name_en: 'Chinese Vegetable Soup', name_zh: '蔬菜汤', description_en: 'A light broth with fresh seasonal vegetables.',
+                description_zh: '清淡的汤，配以时令新鲜蔬菜。', category: 'soups', badge: 'Vegetarian' },
+            { id: 20, name_en: 'House Special Soup', name_zh: '招牌汤', description_en: 'A rich soup with a medley of meats and vegetables.',
+                description_zh: '浓郁汤品，搭配多种肉类和蔬菜。', category: 'soups' },
+            { id: 21, name_en: 'Chicken & Corn Soup', name_zh: '玉米鸡茸汤', description_en: 'Smooth and creamy soup with chicken and sweet corn.',
+                description_zh: '顺滑浓郁的汤，含鸡肉和甜玉米。', category: 'soups' },
 
-                grid.innerHTML = filtered.map(item => `
-                        <div class="menu-item">
-                            <div class="name">${item.name}</div>
-                            <div class="description">${item.description}</div>
-                            ${item.badge ? `<span class="badge ${getBadgeClass(item.badge)}">${item.badge}</span>` : ''}
-                        </div>
-                    `).join('');
-            }
+            // ── Vegetable ──
+            { id: 22, name_en: 'Mixed Vegetable', name_zh: '什锦蔬菜', description_en: 'Fresh garden vegetables stir-fried to perfection.',
+                description_zh: '新鲜田园蔬菜，炒至恰到好处。', category: 'vegetable', badge: 'Vegetarian' },
+            { id: 23, name_en: 'Sauteed Broccoli', name_zh: '清炒西兰花', description_en: 'Fresh broccoli lightly sautéed in a savory sauce.',
+                description_zh: '新鲜西兰花，轻炒于鲜美酱汁中。', category: 'vegetable', badge: 'Vegetarian' },
+            { id: 24, name_en: 'Broccoli with Garlic Sauce', name_zh: '蒜蓉西兰花', description_en: 'Broccoli tossed in a fragrant garlic sauce.',
+                description_zh: '西兰花配香气扑鼻的蒜蓉酱。', category: 'vegetable', badge: 'Vegetarian' },
+            { id: 25, name_en: 'Bean Curd with Szechuan Style', name_zh: '川味豆腐', description_en: 'Tofu prepared in bold Szechuan flavors.',
+                description_zh: '豆腐配以浓郁的川味调料。', category: 'vegetable', badge: 'Spicy' },
+            { id: 26, name_en: 'Ma Po Tofu', name_zh: '麻婆豆腐', description_en: 'Silken tofu in a spicy bean-based sauce with chili oil.',
+                description_zh: '嫩豆腐配以香辣豆瓣酱和红油。', category: 'vegetable', badge: 'Spicy' },
+            { id: 27, name_en: 'House Special Bean Curd', name_zh: '招牌豆腐', description_en: 'Tofu with mixed vegetables in a savory sauce.',
+                description_zh: '豆腐配什锦蔬菜，佐以鲜美的酱汁。', category: 'vegetable', badge: 'Vegetarian' },
+            { id: 28, name_en: "General Tso's Bean Curd", name_zh: '左宗棠豆腐', description_en: 'Crispy tofu in a sweet and spicy General Tso sauce.',
+                description_zh: '酥脆豆腐配左宗棠酱（甜辣口味）。', category: 'vegetable' },
+            { id: 29, name_en: 'Moo Shu Vegetable (w/4 Pancakes)', name_zh: '木须蔬菜（配4张饼）', description_en: 'Stir-fried vegetables served with pancakes and hoisin sauce.',
+                description_zh: '炒蔬菜配薄饼和海鲜酱。', category: 'vegetable', badge: 'Vegetarian' },
 
-            // ── Category Filter ──
-            categoryBtns.forEach(btn => {
+            // ── Egg Foo Young ──
+            { id: 30, name_en: 'Vegetable Egg Foo Young (3)', name_zh: '蔬菜芙蓉蛋（3个）', description_en: 'Fluffy egg omelet with fresh vegetables.',
+                description_zh: '松软蛋饼配新鲜蔬菜。', category: 'egg-foo-young', badge: 'Vegetarian' },
+            { id: 31, name_en: 'Chicken / Pork Egg Foo Young (3)', name_zh: '鸡肉/猪肉芙蓉蛋（3个）', description_en: 'Egg omelet with your choice of chicken or pork.',
+                description_zh: '蛋饼可选鸡肉或猪肉。', category: 'egg-foo-young' },
+            { id: 32, name_en: 'Shrimp / Beef Egg Foo Young (3)', name_zh: '虾仁/牛肉芙蓉蛋（3个）', description_en: 'Egg omelet with shrimp or tender beef.',
+                description_zh: '蛋饼配虾仁或嫩牛肉。', category: 'egg-foo-young' },
+            { id: 33, name_en: 'House Egg Foo Young (3)', name_zh: '招牌芙蓉蛋（3个）', description_en: 'A combination of meats and vegetables in a fluffy egg omelet.',
+                description_zh: '松软蛋饼搭配多种肉类和蔬菜。', category: 'egg-foo-young' },
+
+            // ── Combination Plates ──
+            { id: 34, name_en: 'Chicken or Pork Chow Mein', name_zh: '鸡肉/猪肉炒面', description_en: 'Classic chow mein with your choice of meat.',
+                description_zh: '经典炒面，可选鸡肉或猪肉。', category: 'combination' },
+            { id: 35, name_en: 'Chicken with Mixed Veg', name_zh: '鸡肉炒什锦蔬菜', description_en: 'Chicken stir-fried with fresh mixed vegetables.',
+                description_zh: '鸡肉炒新鲜什锦蔬菜。', category: 'combination' },
+            { id: 36, name_en: 'Chicken with Broccoli', name_zh: '西兰花炒鸡', description_en: 'Tender chicken with crisp broccoli in a savory sauce.',
+                description_zh: '嫩鸡配脆爽西兰花，佐以鲜美酱汁。', category: 'combination' },
+            { id: 37, name_en: 'Shrimp Chow Mein', name_zh: '虾仁炒面', description_en: 'Chow mein with succulent shrimp and vegetables.',
+                description_zh: '炒面配鲜嫩虾仁和蔬菜。', category: 'combination' },
+            { id: 38, name_en: 'Chicken Egg Foo Young', name_zh: '鸡肉芙蓉蛋', description_en: 'A classic egg foo young with chicken.',
+                description_zh: '经典芙蓉蛋配鸡肉。', category: 'combination' },
+            { id: 39, name_en: 'Chicken or Pork Lo Mein', name_zh: '鸡肉/猪肉捞面', description_en: 'Soft noodles stir-fried with your choice of meat.',
+                description_zh: '软面条配炒肉，可选鸡肉或猪肉。', category: 'combination' },
+            { id: 40, name_en: 'Sweet & Sour Chicken', name_zh: '酸甜鸡', description_en: 'Crispy chicken with a sweet and tangy sauce.',
+                description_zh: '酥脆鸡肉配甜酸酱。', category: 'combination' },
+            { id: 41, name_en: 'Moo Goo Gai Pan', name_zh: '蘑菇鸡片', description_en: 'Chicken with mushrooms and vegetables in a light sauce.',
+                description_zh: '鸡肉配蘑菇和蔬菜，清淡酱汁。', category: 'combination' },
+            { id: 42, name_en: 'Pepper Steak with Onion', name_zh: '洋葱青椒牛肉', description_en: 'Tender beef with bell peppers and onions.',
+                description_zh: '嫩牛肉配青椒和洋葱。', category: 'combination' },
+            { id: 43, name_en: 'Shrimp with Lobster Sauce', name_zh: '龙虾汁虾仁', description_en: 'Jumbo shrimp in a savory egg-based sauce.',
+                description_zh: '大虾仁配以鲜美的蛋花龙虾汁。', category: 'combination' },
+            { id: 44, name_en: 'Shrimp or Beef with Mixed Veg', name_zh: '虾仁/牛肉炒什锦蔬菜', description_en: 'Your choice of shrimp or beef with mixed vegetables.',
+                description_zh: '可选虾仁或牛肉配什锦蔬菜。', category: 'combination' },
+            { id: 45, name_en: 'Beef or Shrimp with Broccoli', name_zh: '牛肉/虾仁炒西兰花', description_en: 'Choice of beef or shrimp with fresh broccoli.',
+                description_zh: '可选牛肉或虾仁配新鲜西兰花。', category: 'combination' },
+            { id: 46, name_en: 'Beef or Shrimp with Lo Mein', name_zh: '牛肉/虾仁捞面', description_en: 'Lo Mein with your choice of beef or shrimp.',
+                description_zh: '捞面可选牛肉或虾仁。', category: 'combination' },
+            { id: 47, name_en: 'Kung Pao Chicken', name_zh: '宫保鸡丁', description_en: 'Diced chicken with peanuts and chili peppers in a bold sauce.',
+                description_zh: '鸡丁配花生和辣椒，浓郁酱汁。', category: 'combination', badge: 'Spicy' },
+            { id: 48, name_en: "General Tso's Chicken", name_zh: '左宗棠鸡', description_en: 'Crispy chicken in a sweet and spicy sauce.',
+                description_zh: '酥脆鸡肉配甜辣酱。', category: 'combination', badge: 'Spicy' },
+            { id: 49, name_en: 'Sesame Chicken', name_zh: '芝麻鸡', description_en: 'Crispy chicken with a sweet sauce and sesame seeds.',
+                description_zh: '酥脆鸡肉配甜酱和芝麻。', category: 'combination' },
+            { id: 50, name_en: 'Boneless Spare Ribs', name_zh: '无骨排骨', description_en: 'Tender boneless ribs with a sweet glaze.',
+                description_zh: '鲜嫩无骨排骨，裹有甜味酱汁。', category: 'combination' },
+
+            // ── Lunch Specials ──
+            { id: 51, name_en: 'Chicken or Pork Chow Mein', name_zh: '鸡肉/猪肉炒面', description_en: 'Classic chow mein with your choice of meat.',
+                description_zh: '经典炒面，可选鸡肉或猪肉。', category: 'lunch' },
+            { id: 52, name_en: 'Shrimp Chow Mein', name_zh: '虾仁炒面', description_en: 'Chow mein with shrimp and vegetables.',
+                description_zh: '炒面配虾仁和蔬菜。', category: 'lunch' },
+            { id: 53, name_en: 'Shrimp and Chicken', name_zh: '虾仁炒鸡', description_en: 'A delicious combination of shrimp and chicken.',
+                description_zh: '虾仁和鸡肉的美味组合。', category: 'lunch' },
+            { id: 54, name_en: 'Roast Pork with Broccoli', name_zh: '叉烧西兰花', description_en: 'Roast pork with crisp broccoli in a savory sauce.',
+                description_zh: '叉烧配脆爽西兰花，佐以鲜美酱汁。', category: 'lunch' },
+            { id: 55, name_en: 'Chicken with Broccoli', name_zh: '西兰花炒鸡', description_en: 'Chicken and broccoli in a classic sauce.',
+                description_zh: '鸡肉和西兰花配经典酱汁。', category: 'lunch' },
+            { id: 56, name_en: 'Shrimp with Lobster Sauce', name_zh: '龙虾汁虾仁', description_en: 'Shrimp in a rich lobster sauce.',
+                description_zh: '虾仁配浓郁龙虾汁。', category: 'lunch' },
+            { id: 57, name_en: 'Chicken or Pork with Mixed Veg', name_zh: '鸡肉/猪肉炒什锦蔬菜', description_en: 'Your choice of meat with fresh mixed vegetables.',
+                description_zh: '可选鸡肉或猪肉配新鲜什锦蔬菜。', category: 'lunch' },
+            { id: 58, name_en: 'Shrimp or Beef with Mixed Veg', name_zh: '虾仁/牛肉炒什锦蔬菜', description_en: 'Choice of shrimp or beef with mixed vegetables.',
+                description_zh: '可选虾仁或牛肉配什锦蔬菜。', category: 'lunch' },
+            { id: 59, name_en: 'Pepper Steak with Onion', name_zh: '洋葱青椒牛肉', description_en: 'Beef with bell peppers and onions.',
+                description_zh: '牛肉配青椒和洋葱。', category: 'lunch' },
+
+            // ── Chicken & Pork ──
+            { id: 60, name_en: 'Chicken / Pork with Broccoli', name_zh: '鸡肉/猪肉炒西兰花', description_en: 'Your choice of meat with fresh broccoli.',
+                description_zh: '可选鸡肉或猪肉配新鲜西兰花。', category: 'chicken-pork' },
+            { id: 61, name_en: 'Chicken / Pork with Mixed Vegetables', name_zh: '鸡肉/猪肉炒什锦蔬菜', description_en: 'Choice of meat with mixed vegetables.',
+                description_zh: '可选鸡肉或猪肉配什锦蔬菜。', category: 'chicken-pork' },
+            { id: 62, name_en: 'Moo Goo Gai Pan', name_zh: '蘑菇鸡片', description_en: 'Chicken with mushrooms and vegetables.',
+                description_zh: '鸡肉配蘑菇和蔬菜。', category: 'chicken-pork' },
+            { id: 63, name_en: 'Chicken with Cashew Nuts', name_zh: '腰果鸡丁', description_en: 'Chicken stir-fried with cashews and vegetables.',
+                description_zh: '鸡肉炒腰果和蔬菜。', category: 'chicken-pork' },
+            { id: 64, name_en: 'Double Cooked Pork', name_zh: '回锅肉', description_en: 'Pork cooked twice for a rich, savory flavor.',
+                description_zh: '猪肉两次烹制，味道浓郁鲜美。', category: 'chicken-pork' },
+            { id: 65, name_en: 'Curry Chicken with Onion', name_zh: '咖喱鸡', description_en: 'Chicken in a fragrant curry sauce with onions.',
+                description_zh: '鸡肉配香气扑鼻的咖喱酱和洋葱。', category: 'chicken-pork' },
+            { id: 66, name_en: 'Kung Pao Chicken', name_zh: '宫保鸡丁', description_en: 'Chicken with peanuts and chili peppers.',
+                description_zh: '鸡丁配花生和辣椒。', category: 'chicken-pork', badge: 'Spicy' },
+            { id: 67, name_en: 'Chicken / Pork with Garlic Sauce', name_zh: '蒜蓉鸡肉/猪肉', description_en: 'Choice of meat in a savory garlic sauce.',
+                description_zh: '可选鸡肉或猪肉配蒜蓉酱。', category: 'chicken-pork' },
+            { id: 68, name_en: 'Hunan Chicken / Pork', name_zh: '湘味鸡肉/猪肉', description_en: 'Spicy Hunan-style preparation with vegetables.',
+                description_zh: '湘味辣炒鸡肉或猪肉配蔬菜。', category: 'chicken-pork', badge: 'Spicy' },
+            { id: 69, name_en: 'Chicken / Pork with Szechuan Style', name_zh: '川味鸡肉/猪肉', description_en: 'Bold Szechuan flavors with your choice of meat.',
+                description_zh: '浓郁的川味调料配鸡肉或猪肉。', category: 'chicken-pork', badge: 'Spicy' },
+            { id: 70, name_en: 'Sweet & Sour Chicken', name_zh: '酸甜鸡', description_en: 'Classic sweet and sour chicken.',
+                description_zh: '经典酸甜鸡。', category: 'chicken-pork' },
+            { id: 71, name_en: 'Chicken & Shrimp', name_zh: '鸡虾双拼', description_en: 'A delicious combination of chicken and shrimp.',
+                description_zh: '鸡肉和虾仁的美味组合。', category: 'chicken-pork' },
+            { id: 72, name_en: 'Moo Shu Chicken / Pork (w/4 Pancakes)', name_zh: '木须鸡肉/猪肉（配4张饼）', description_en: 'Stir-fried with vegetables and served with pancakes.',
+                description_zh: '炒鸡肉或猪肉配蔬菜和薄饼。', category: 'chicken-pork' },
+
+            // ── Beef ──
+            { id: 73, name_en: 'Beef with Broccoli', name_zh: '西兰花炒牛肉', description_en: 'Tender beef with fresh broccoli in a savory sauce.',
+                description_zh: '嫩牛肉配新鲜西兰花，佐以鲜美酱汁。', category: 'beef' },
+            { id: 74, name_en: 'Beef with Mixed Vegetables', name_zh: '牛肉炒什锦蔬菜', description_en: 'Beef stir-fried with fresh mixed vegetables.',
+                description_zh: '牛肉炒新鲜什锦蔬菜。', category: 'beef' },
+            { id: 75, name_en: 'Pepper Steak with Onion', name_zh: '洋葱青椒牛肉', description_en: 'Beef with bell peppers and onions.',
+                description_zh: '牛肉配青椒和洋葱。', category: 'beef' },
+            { id: 76, name_en: 'Curry Beef with Onion', name_zh: '咖喱牛肉', description_en: 'Beef in a fragrant curry sauce with onions.',
+                description_zh: '牛肉配香气扑鼻的咖喱酱和洋葱。', category: 'beef' },
+            { id: 77, name_en: 'Kung Pao Beef', name_zh: '宫保牛肉', description_en: 'Beef with peanuts and chili peppers.',
+                description_zh: '牛肉配花生和辣椒。', category: 'beef', badge: 'Spicy' },
+            { id: 78, name_en: 'Hunan Beef', name_zh: '湘味牛肉', description_en: 'Spicy Hunan-style beef with vegetables.',
+                description_zh: '湘味辣炒牛肉配蔬菜。', category: 'beef', badge: 'Spicy' },
+            { id: 79, name_en: 'Beef with Garlic Sauce', name_zh: '蒜蓉牛肉', description_en: 'Beef in a savory garlic sauce.',
+                description_zh: '牛肉配蒜蓉酱。', category: 'beef' },
+            { id: 80, name_en: 'Mongolian Beef', name_zh: '蒙古牛肉', description_en: 'Sliced beef with scallions and onions in a rich sauce.',
+                description_zh: '牛肉片配大葱和洋葱，浓郁酱汁。', category: 'beef' },
+            { id: 81, name_en: 'Hot & Spicy Beef', name_zh: '麻辣牛肉', description_en: 'Beef prepared with chili and bold spices.',
+                description_zh: '牛肉配辣椒和浓郁香料。', category: 'beef', badge: 'Spicy' },
+            { id: 82, name_en: 'Beef with Szechuan Style', name_zh: '川味牛肉', description_en: 'Beef in a bold Szechuan sauce.',
+                description_zh: '牛肉配浓郁的川味酱汁。', category: 'beef', badge: 'Spicy' },
+
+            // ── Seafood ──
+            { id: 83, name_en: 'Shrimp with Broccoli', name_zh: '西兰花炒虾仁', description_en: 'Shrimp with crisp broccoli in a savory sauce.',
+                description_zh: '虾仁配脆爽西兰花，佐以鲜美酱汁。', category: 'seafood' },
+            { id: 84, name_en: 'Shrimp with Mixed Vegetable', name_zh: '虾仁炒什锦蔬菜', description_en: 'Shrimp stir-fried with fresh vegetables.',
+                description_zh: '虾仁炒新鲜什锦蔬菜。', category: 'seafood' },
+            { id: 85, name_en: 'Shrimp Lobster Sauce', name_zh: '龙虾汁虾仁', description_en: 'Shrimp in a savory egg-based lobster sauce.',
+                description_zh: '虾仁配鲜美的蛋花龙虾汁。', category: 'seafood' },
+            { id: 86, name_en: 'Kung Pao Shrimp', name_zh: '宫保虾仁', description_en: 'Shrimp with peanuts and chili peppers.',
+                description_zh: '虾仁配花生和辣椒。', category: 'seafood', badge: 'Spicy' },
+            { id: 87, name_en: 'Shrimp with Garlic Sauce', name_zh: '蒜蓉虾仁', description_en: 'Shrimp in a fragrant garlic sauce.',
+                description_zh: '虾仁配香气扑鼻的蒜蓉酱。', category: 'seafood' },
+            { id: 88, name_en: 'Hunan Shrimp', name_zh: '湘味虾仁', description_en: 'Spicy Hunan-style shrimp with vegetables.',
+                description_zh: '湘味辣炒虾仁配蔬菜。', category: 'seafood', badge: 'Spicy' },
+            { id: 89, name_en: 'Curry Shrimp', name_zh: '咖喱虾仁', description_en: 'Shrimp in a rich curry sauce.',
+                description_zh: '虾仁配浓郁咖喱酱。', category: 'seafood' },
+            { id: 90, name_en: 'Shrimp with Szechuan Style', name_zh: '川味虾仁', description_en: 'Shrimp prepared with bold Szechuan spices.',
+                description_zh: '虾仁配浓郁的川味香料。', category: 'seafood', badge: 'Spicy' },
+            { id: 91, name_en: 'Sweet and Sour Shrimp', name_zh: '酸甜虾仁', description_en: 'Crispy shrimp with a sweet and tangy sauce.',
+                description_zh: '酥脆虾仁配甜酸酱。', category: 'seafood' },
+            { id: 92, name_en: 'Scallop with Mixed Chinese Vegetable', name_zh: '带子炒什锦蔬菜', description_en: 'Fresh scallops with mixed vegetables.',
+                description_zh: '新鲜带子配什锦蔬菜。', category: 'seafood' },
+            { id: 93, name_en: 'Moo Shu Shrimp (w/4 Pancakes)', name_zh: '木须虾仁（配4张饼）', description_en: 'Shrimp with vegetables and pancakes.',
+                description_zh: '虾仁配蔬菜和薄饼。', category: 'seafood' },
+
+            // ── Fried Rice ──
+            { id: 94, name_en: 'Vegetable Fried Rice', name_zh: '素炒饭', description_en: 'Wok-fried rice with fresh vegetables and egg.',
+                description_zh: '锅炒米饭配新鲜蔬菜和鸡蛋。', category: 'fried-rice', badge: 'Vegetarian' },
+            { id: 95, name_en: 'Pork or Chicken Fried Rice', name_zh: '猪肉/鸡肉炒饭', description_en: 'Fried rice with your choice of pork or chicken.',
+                description_zh: '炒饭可选猪肉或鸡肉。', category: 'fried-rice' },
+            { id: 96, name_en: 'Shrimp Fried Rice', name_zh: '虾仁炒饭', description_en: 'Fried rice with succulent shrimp.',
+                description_zh: '炒饭配鲜嫩虾仁。', category: 'fried-rice' },
+            { id: 97, name_en: 'Beef Fried Rice', name_zh: '牛肉炒饭', description_en: 'Fried rice with tender beef.',
+                description_zh: '炒饭配嫩牛肉。', category: 'fried-rice' },
+            { id: 98, name_en: 'House Special Fried Rice', name_zh: '招牌炒饭', description_en: 'A combination of meats in flavorful fried rice.',
+                description_zh: '多种肉类搭配风味炒饭。', category: 'fried-rice' },
+
+            // ── Lo Mein ──
+            { id: 99, name_en: 'Vegetable Lo Mein', name_zh: '素捞面', description_en: 'Soft noodles with fresh vegetables.',
+                description_zh: '软面条配新鲜蔬菜。', category: 'lo-mein', badge: 'Vegetarian' },
+            { id: 100, name_en: 'Pork Lo Mein', name_zh: '猪肉捞面', description_en: 'Soft noodles with pork and vegetables.',
+                description_zh: '软面条配猪肉和蔬菜。', category: 'lo-mein' },
+            { id: 101, name_en: 'Chicken Lo Mein', name_zh: '鸡肉捞面', description_en: 'Soft noodles with chicken and vegetables.',
+                description_zh: '软面条配鸡肉和蔬菜。', category: 'lo-mein' },
+            { id: 102, name_en: 'Beef Lo Mein', name_zh: '牛肉捞面', description_en: 'Soft noodles with beef and vegetables.',
+                description_zh: '软面条配牛肉和蔬菜。', category: 'lo-mein' },
+            { id: 103, name_en: 'Shrimp Lo Mein', name_zh: '虾仁捞面', description_en: 'Soft noodles with shrimp and vegetables.',
+                description_zh: '软面条配虾仁和蔬菜。', category: 'lo-mein' },
+            { id: 104, name_en: 'House Special Lo Mein', name_zh: '招牌捞面', description_en: 'A combination of meats in soft noodles.',
+                description_zh: '多种肉类配软面条。', category: 'lo-mein' },
+
+            // ── Mai Fun ──
+            { id: 105, name_en: 'Vegetable Mai Fun', name_zh: '素米粉', description_en: 'Rice noodles with fresh vegetables.',
+                description_zh: '米粉配新鲜蔬菜。', category: 'mai-fun', badge: 'Vegetarian' },
+            { id: 106, name_en: 'Pork Mai Fun', name_zh: '猪肉米粉', description_en: 'Rice noodles with pork and vegetables.',
+                description_zh: '米粉配猪肉和蔬菜。', category: 'mai-fun' },
+            { id: 107, name_en: 'Chicken Mai Fun', name_zh: '鸡肉米粉', description_en: 'Rice noodles with chicken and vegetables.',
+                description_zh: '米粉配鸡肉和蔬菜。', category: 'mai-fun' },
+            { id: 108, name_en: 'Beef Mai Fun', name_zh: '牛肉米粉', description_en: 'Rice noodles with beef and vegetables.',
+                description_zh: '米粉配牛肉和蔬菜。', category: 'mai-fun' },
+            { id: 109, name_en: 'Shrimp Mai Fun', name_zh: '虾仁米粉', description_en: 'Rice noodles with shrimp and vegetables.',
+                description_zh: '米粉配虾仁和蔬菜。', category: 'mai-fun' },
+            { id: 110, name_en: 'House Special Mai Fun', name_zh: '招牌米粉', description_en: 'A combination of meats in rice noodles.',
+                description_zh: '多种肉类配米粉。', category: 'mai-fun' },
+            { id: 111, name_en: 'Singapore Mai Fun', name_zh: '星洲米粉', description_en: 'Rice noodles with shrimp, BBQ pork, and curry spice.',
+                description_zh: '米粉配虾仁、叉烧和咖喱香料。', category: 'mai-fun', badge: 'Spicy' },
+
+            // ── Chow Mein ──
+            { id: 112, name_en: 'Vegetable Chow Mein', name_zh: '素炒面', description_en: 'Crispy noodles with fresh vegetables.',
+                description_zh: '酥脆面条配新鲜蔬菜。', category: 'chow-mein', badge: 'Vegetarian' },
+            { id: 113, name_en: 'Chicken Chow Mein', name_zh: '鸡肉炒面', description_en: 'Crispy noodles with chicken and vegetables.',
+                description_zh: '酥脆面条配鸡肉和蔬菜。', category: 'chow-mein' },
+            { id: 114, name_en: 'Pork Chow Mein', name_zh: '猪肉炒面', description_en: 'Crispy noodles with pork and vegetables.',
+                description_zh: '酥脆面条配猪肉和蔬菜。', category: 'chow-mein' },
+            { id: 115, name_en: 'Shrimp Chow Mein', name_zh: '虾仁炒面', description_en: 'Crispy noodles with shrimp and vegetables.',
+                description_zh: '酥脆面条配虾仁和蔬菜。', category: 'chow-mein' },
+            { id: 116, name_en: 'Beef Chow Mein', name_zh: '牛肉炒面', description_en: 'Crispy noodles with beef and vegetables.',
+                description_zh: '酥脆面条配牛肉和蔬菜。', category: 'chow-mein' },
+
+            // ── Chop Suey ──
+            { id: 117, name_en: 'Vegetable Chop Suey', name_zh: '素杂碎', description_en: 'Mixed vegetables in a savory chop suey sauce.',
+                description_zh: '什锦蔬菜配鲜美的杂碎酱汁。', category: 'chop-suey', badge: 'Vegetarian' },
+            { id: 118, name_en: 'Chicken Chop Suey', name_zh: '鸡肉杂碎', description_en: 'Chicken and vegetables in chop suey sauce.',
+                description_zh: '鸡肉和蔬菜配杂碎酱汁。', category: 'chop-suey' },
+            { id: 119, name_en: 'Pork Chop Suey', name_zh: '猪肉杂碎', description_en: 'Pork and vegetables in chop suey sauce.',
+                description_zh: '猪肉和蔬菜配杂碎酱汁。', category: 'chop-suey' },
+            { id: 120, name_en: 'Shrimp Chop Suey', name_zh: '虾仁杂碎', description_en: 'Shrimp and vegetables in chop suey sauce.',
+                description_zh: '虾仁和蔬菜配杂碎酱汁。', category: 'chop-suey' },
+            { id: 121, name_en: 'Beef Chop Suey', name_zh: '牛肉杂碎', description_en: 'Beef and vegetables in chop suey sauce.',
+                description_zh: '牛肉和蔬菜配杂碎酱汁。', category: 'chop-suey' },
+
+            // ── Specialities ──
+            { id: 122, name_en: 'Fried Chicken Wings', name_zh: '炸鸡翅', description_en: 'Crispy fried chicken wings.',
+                description_zh: '酥脆炸鸡翅。', category: 'specialties' },
+            { id: 123, name_en: 'Fried Jumbo Shrimp', name_zh: '炸大虾', description_en: 'Large crispy fried shrimp.',
+                description_zh: '大个酥脆炸虾。', category: 'specialties' },
+            { id: 124, name_en: 'Fried Baby Shrimp', name_zh: '炸小虾', description_en: 'Crispy fried baby shrimp.',
+                description_zh: '酥脆炸小虾。', category: 'specialties' },
+            { id: 125, name_en: 'Fried Scallops', name_zh: '炸带子', description_en: 'Crispy fried scallops.',
+                description_zh: '酥脆炸带子。', category: 'specialties' },
+            { id: 126, name_en: 'Fried Chicken Nuggets', name_zh: '炸鸡块', description_en: 'Crispy bite-sized chicken nuggets.',
+                description_zh: '酥脆一口大小的炸鸡块。', category: 'specialties' },
+
+            // ── Chef's Suggestions ──
+            { id: 127, name_en: 'Happy Family', name_zh: '全家福', description_en: 'A mix of scallops, shrimp, roast pork, beef, chicken, and vegetables in brown sauce.',
+                description_zh: '带子、虾仁、叉烧、牛肉、鸡肉和蔬菜混合，配蚝油酱汁。', category: 'chefs' },
+            { id: 128, name_en: 'Seafood Delight', name_zh: '海鲜荟萃', description_en: 'Shrimp and scallops with mixed vegetables in a light white sauce.',
+                description_zh: '虾仁和带子配什锦蔬菜，清淡白汁。', category: 'chefs' },
+            { id: 129, name_en: 'Triple Delight', name_zh: '三鲜', description_en: 'Shrimp, beef, and chicken with broccoli, mushroom, and baby corn in brown sauce.',
+                description_zh: '虾仁、牛肉和鸡肉配西兰花、蘑菇和玉米笋，蚝油酱汁。', category: 'chefs' },
+            { id: 130, name_en: "General Tso's Chicken", name_zh: '左宗棠鸡', description_en: 'Chicken, lightly breaded and deep fried, with mixed vegetables in a spicy sweet brown sauce.',
+                description_zh: '鸡肉轻裹面衣油炸，配什锦蔬菜和甜辣蚝油酱汁。', category: 'chefs', badge: 'Spicy' },
+            { id: 131, name_en: "General Tso's Shrimp or Beef", name_zh: '左宗棠虾仁/牛肉', description_en: 'Shrimp or beef breaded and deep fried, with mixed vegetables in a spicy sweet brown sauce.',
+                description_zh: '虾仁或牛肉裹面衣油炸，配什锦蔬菜和甜辣蚝油酱汁。', category: 'chefs', badge: 'Spicy' },
+            { id: 132, name_en: 'Capital Chicken', name_zh: '首都鸡', description_en: 'Tender chicken breast with broccoli, mushroom, green pepper, and baby corn in spicy brown sauce.',
+                description_zh: '嫩鸡胸肉配西兰花、蘑菇、青椒和玉米笋，香辣蚝油酱汁。', category: 'chefs', badge: 'Spicy' },
+            { id: 133, name_en: 'Honey Chicken', name_zh: '蜜汁鸡', description_en: 'Golden fried chicken smothered with special honey sauce.',
+                description_zh: '金黄炸鸡，淋上特制蜜汁酱。', category: 'chefs' },
+            { id: 134, name_en: 'Hunan Delicacy', name_zh: '湘味珍品', description_en: 'Shrimp and beef in two different spicy sauces.',
+                description_zh: '虾仁和牛肉配两种不同的香辣酱汁。', category: 'chefs', badge: 'Spicy' },
+            { id: 135, name_en: 'Sesame Chicken', name_zh: '芝麻鸡', description_en: 'Chicken, lightly breaded and deep fried, with mixed vegetables in spicy sweet brown sauce with sesame seeds.',
+                description_zh: '鸡肉轻裹面衣油炸，配什锦蔬菜和甜辣蚝油酱汁，撒上芝麻。', category: 'chefs' },
+            { id: 136, name_en: 'Boneless Chicken', name_zh: '无骨鸡', description_en: 'White meat chicken, deep fried, served with mixed vegetables.',
+                description_zh: '白肉鸡油炸，配什锦蔬菜。', category: 'chefs' },
+            { id: 137, name_en: 'Dragon & Phoenix', name_zh: '龙凤配', description_en: 'Shrimp with mixed vegetables in a light sauce, and chunks of chicken in a spicy sweet brown sauce.',
+                description_zh: '虾仁配什锦蔬菜清淡酱汁，鸡块配甜辣蚝油酱汁。', category: 'chefs' },
+            { id: 138, name_en: 'Perfect Match', name_zh: '绝配', description_en: 'Fresh scallops and shrimp sautéed with vegetables in garlic sauce.',
+                description_zh: '新鲜带子和虾仁炒蔬菜，配蒜蓉酱。', category: 'chefs' },
+            { id: 139, name_en: 'Four Season', name_zh: '四季', description_en: 'Jumbo shrimp, chicken, pork, and beef with mixed vegetables.',
+                description_zh: '大虾、鸡肉、猪肉和牛肉配什锦蔬菜。', category: 'chefs' },
+            { id: 140, name_en: 'Beef & Scallops', name_zh: '牛肉带子', description_en: 'Sliced tender beef and scallops with mixed vegetables.',
+                description_zh: '嫩牛肉片和带子配什锦蔬菜。', category: 'chefs' },
+            { id: 141, name_en: 'Orange Chicken', name_zh: '陈皮鸡', description_en: 'Crispy chicken in a tangy orange sauce.',
+                description_zh: '酥脆鸡肉配酸甜橙汁酱。', category: 'chefs' },
+            { id: 142, name_en: 'Orange Beef or Shrimp', name_zh: '陈皮牛肉/虾仁', description_en: 'Your choice of beef or shrimp in a tangy orange sauce.',
+                description_zh: '可选牛肉或虾仁配酸甜橙汁酱。', category: 'chefs' },
+            { id: 143, name_en: 'Hot and Spicy Shrimp', name_zh: '香辣虾仁', description_en: 'Shrimp prepared with bold chili and spices.',
+                description_zh: '虾仁配辣椒和浓郁香料。', category: 'chefs', badge: 'Spicy' },
+            { id: 144, name_en: 'Lemon Chicken', name_zh: '柠檬鸡', description_en: 'Crispy chicken in a bright lemon sauce.',
+                description_zh: '酥脆鸡肉配清新柠檬酱。', category: 'chefs' },
+        ];
+
+        // ── Category list (in order) ──
+        const CATEGORIES = [
+            'lunch', 'chefs', 'combination', 'specialties', 'appetizers', 'soups',
+            'fried-rice', 'lo-mein', 'mai-fun', 'chow-mein', 'chop-suey',
+            'chicken-pork', 'beef', 'seafood', 'vegetable', 'egg-foo-young'
+        ];
+
+        // ── State ──
+        let currentLang = 'en';
+        let currentCategory = 'lunch';
+
+        // ── DOM refs ──
+        const grid = document.getElementById('menuGrid');
+        const categoriesContainer = document.getElementById('menuCategories');
+        const langToggle = document.getElementById('langToggle');
+
+        // ── i18n helpers ──
+        function t(key) {
+            return TRANSLATIONS[currentLang]?.[key] || key;
+        }
+
+        function getCatName(key) {
+            return t('cat.' + key) || key;
+        }
+
+        function getMenuName(item) {
+            return currentLang === 'en' ? item.name_en : (item.name_zh || item.name_en);
+        }
+
+        function getMenuDesc(item) {
+            return currentLang === 'en' ? item.description_en : (item.description_zh || item.description_en);
+        }
+
+        // ── Render categories ──
+        function renderCategories() {
+            categoriesContainer.innerHTML = CATEGORIES.map(cat => `
+                    <button class="menu-category-btn ${cat === currentCategory ? 'active' : ''}" data-category="${cat}">
+                        ${getCatName(cat)}
+                    </button>
+                `).join('');
+
+            // Re-bind events
+            categoriesContainer.querySelectorAll('.menu-category-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    categoriesContainer.querySelectorAll('.menu-category-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    renderMenu(btn.dataset.category);
+                    currentCategory = btn.dataset.category;
+                    renderMenu();
                 });
             });
+        }
 
-            // ── Initial Render (Lunch Specials) ──
-            renderMenu('lunch');
+        // ── Render menu items ──
+        function renderMenu() {
+            const filtered = MENU_DATA.filter(item => item.category === currentCategory);
 
-            // ── Smooth scroll for anchor links ──
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#') return;
-                    const target = document.querySelector(href);
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
+            if (filtered.length === 0) {
+                grid.innerHTML =
+                    `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#6b4c3a; font-style:italic;">${currentLang === 'en' ? 'No items in this category' : '此类别暂无菜品'}</div>`;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(item => {
+                const badge = item.badge;
+                let badgeClass = '';
+                let badgeText = badge;
+                if (badge === 'Spicy') badgeClass = 'spicy';
+                else if (badge === 'Vegetarian') badgeClass = 'veg';
+
+                // Translate badge text if needed
+                if (badge === 'Spicy') badgeText = currentLang === 'en' ? 'Spicy' : '辣';
+                else if (badge === 'Vegetarian') badgeText = currentLang === 'en' ? 'Vegetarian' : '素';
+
+                return `
+                        <div class="menu-item">
+                            <div class="name">${getMenuName(item)}</div>
+                            <div class="description">${getMenuDesc(item)}</div>
+                            ${badge ? `<span class="badge ${badgeClass}">${badgeText}</span>` : ''}
+                        </div>
+                    `;
+            }).join('');
+        }
+
+        // ── Update all i18n text nodes ──
+        function updateI18n() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const val = t(key);
+                if (val) {
+                    // Preserve HTML in the translation
+                    el.innerHTML = val;
+                }
             });
-        })();
-    </script>
+
+            // Update category buttons
+            categoriesContainer.querySelectorAll('.menu-category-btn').forEach(btn => {
+                const cat = btn.dataset.category;
+                btn.textContent = getCatName(cat);
+            });
+
+            // Update menu items
+            renderMenu();
+
+            // Update lang toggle button text
+            langToggle.textContent = currentLang === 'en' ? '中文' : 'English';
+            langToggle.classList.toggle('active', currentLang === 'zh');
+
+            // Update HTML lang
+            document.documentElement.lang = currentLang;
+        }
+
+        // ── Switch language ──
+        function setLanguage(lang) {
+            if (lang === currentLang) return;
+            currentLang = lang;
+            updateI18n();
+        }
+
+        // ── Toggle language ──
+        function toggleLanguage() {
+            setLanguage(currentLang === 'en' ? 'zh' : 'en');
+        }
+
+        // ── Mobile nav toggle ──
+        const toggle = document.getElementById('navToggle');
+        const nav = document.getElementById('navLinks');
+
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('open');
+        });
+
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('open');
+            });
+        });
+
+        // ── Lang toggle ──
+        langToggle.addEventListener('click', toggleLanguage);
+
+        // ── Smooth scroll ──
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ── Init ──
+        renderCategories();
+        renderMenu();
+        updateI18n();
+
+        // ── Expose toggle for debugging (optional) ──
+        window.__toggleLang = toggleLanguage;
+    })();
+</script>
 
 </body>
 </html>
