@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zhen Choo Chinese Restaurant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ── Reset & Base ── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcf8f3;
+            color: #2c1810;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ── Typography ── */
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ── Header / Navigation ── */
+        header {
+            background: #1a0e08;
+            color: #f5e6d3;
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #d4a373;
+        }
+
+        .logo .sub {
+            font-size: 0.7rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #b8864b;
+            display: block;
+            margin-top: -4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            transition: color 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: #d4a373;
+        }
+
+        .nav-cta {
+            background: #d4a373;
+            color: #1a0e08 !important;
+            padding: 8px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background 0.25s;
+        }
+
+        .nav-cta:hover {
+            background: #e8c9a0 !important;
+            color: #1a0e08 !important;
+        }
+
+        /* ── Mobile Nav Toggle ── */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 28px;
+            height: 2.5px;
+            background: #f5e6d3;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: linear-gradient(135deg, #1a0e08 0%, #3d241a 100%);
+            color: #f5e6d3;
+            padding: 80px 0 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a373' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: #d4a373;
+            color: #1a0e08;
+            padding: 4px 20px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 4.2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: 2px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: #d4a373;
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero .tagline {
+            font-size: 1.05rem;
+            max-width: 560px;
+            margin: 0 auto 28px;
+            opacity: 0.85;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #d4a373;
+            color: #1a0e08;
+            padding: 14px 40px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.25s, transform 0.15s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #e8c9a0;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #f5e6d3;
+            padding: 14px 40px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid #d4a373;
+            cursor: pointer;
+            transition: background 0.25s, color 0.25s;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: #d4a373;
+            color: #1a0e08;
+        }
+
+        /* ── Section Shared ── */
+        section {
+            padding: 72px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1a0e08;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: #6b4c3a;
+            max-width: 640px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+        }
+
+        .section-title .accent {
+            color: #b8864b;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: #d4a373;
+            margin: 12px auto 28px;
+            border-radius: 4px;
+        }
+
+        /* ── About Section ── */
+        .about-section {
+            background: #f8f2eb;
+        }
+
+        .about-story {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #2c1810;
+            line-height: 1.8;
+        }
+
+        .about-story .highlight {
+            color: #b8864b;
+            font-weight: 600;
+        }
+
+        .about-story p {
+            margin-bottom: 16px;
+        }
+
+        .about-story p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-tags {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .about-tag {
+            background: #fff;
+            padding: 6px 22px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #3d241a;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-tag span {
+            color: #b8864b;
+            margin-right: 6px;
+        }
+
+        /* ── Location ── */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .location-card {
+            background: #fff;
+            padding: 36px 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(26, 14, 8, 0.08);
+        }
+
+        .location-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .location-card .address {
+            font-size: 1rem;
+            color: #3d241a;
+            margin-bottom: 4px;
+        }
+
+        .location-card .address .shopping-center {
+            font-weight: 500;
+            color: #b8864b;
+        }
+
+        .location-card .detail-label {
+            font-weight: 600;
+            color: #1a0e08;
+            display: block;
+            margin-top: 14px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #b8864b;
+        }
+
+        .location-card .detail-value {
+            font-size: 1.05rem;
+        }
+
+        .location-card .detail-value .phone-link {
+            color: #1a0e08;
+            transition: color 0.25s;
+        }
+
+        .location-card .detail-value .phone-link:hover {
+            color: #b8864b;
+        }
+
+        .location-card .service-note {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #f0e8de;
+            font-size: 0.9rem;
+            color: #3d241a;
+        }
+
+        .location-card .service-note strong {
+            color: #b8864b;
+        }
+
+        .location-card .price-range {
+            display: inline-block;
+            background: #f0e8de;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #3d241a;
+            margin-top: 6px;
+        }
+
+        .location-map {
+            border-radius: 16px;
+            overflow: hidden;
+            min-height: 280px;
+            background: #e8ddd0;
+        }
+
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 280px;
+            border: none;
+            display: block;
+        }
+
+        /* ── Hours ── */
+        .hours-section {
+            background: #f0e8de;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hours-card {
+            background: #fff;
+            padding: 18px 16px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .hours-card .day {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #b8864b;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .hours-card .time {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .hours-card .note {
+            font-size: 0.7rem;
+            color: #8a7a6e;
+            margin-top: 2px;
+            font-style: italic;
+        }
+
+        /* ── Menu ── */
+        .menu-section {
+            background: #fcf8f3;
+        }
+
+        .menu-note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b4c3a;
+            max-width: 600px;
+            margin: -20px auto 36px;
+            font-weight: 300;
+            background: #f0e8de;
+            padding: 10px 24px;
+            border-radius: 40px;
+        }
+
+        .menu-note strong {
+            color: #b8864b;
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .menu-category-btn {
+            background: transparent;
+            border: 2px solid #d4a373;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.25s, color 0.25s;
+            color: #1a0e08;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .menu-category-btn.active,
+        .menu-category-btn:hover {
+            background: #d4a373;
+            color: #1a0e08;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background: #fff;
+            padding: 20px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(26, 14, 8, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid #d4a373;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(26, 14, 8, 0.10);
+        }
+
+        .menu-item .name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .menu-item .description {
+            font-size: 0.85rem;
+            color: #6b4c3a;
+            font-weight: 300;
+        }
+
+        .menu-item .badge {
+            display: inline-block;
+            background: #f0e8de;
+            color: #3d241a;
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 2px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+
+        .menu-item .badge.spicy {
+            background: #f0d6c8;
+            color: #a0522d;
+        }
+
+        .menu-item .badge.veg {
+            background: #d4e8d4;
+            color: #2d6b2d;
+        }
+
+        /* ── Contact ── */
+        .contact-section {
+            background: linear-gradient(135deg, #1a0e08 0%, #3d241a 100%);
+            color: #f5e6d3;
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            color: #f5e6d3;
+        }
+
+        .contact-section .section-subtitle {
+            color: #d4a373;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .contact-item .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #d4a373;
+            font-weight: 600;
+        }
+
+        .contact-item .value {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .contact-item .value a {
+            transition: color 0.25s;
+        }
+
+        .contact-item .value a:hover {
+            color: #d4a373;
+        }
+
+        .contact-phones {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: #0f0805;
+            color: #8a7a6e;
+            padding: 28px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            border-top: 1px solid #2c1a12;
+        }
+
+        footer .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #d4a373;
+            margin-bottom: 2px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 820px) {
+            .location-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                gap: 28px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #1a0e08;
+                padding: 20px 0;
+                gap: 14px;
+                align-items: center;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 0.8rem;
+                letter-spacing: 4px;
+            }
+
+            .hero {
+                padding: 56px 0 48px;
+            }
+
+            section {
+                padding: 48px 0;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hours-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .location-card {
+                padding: 24px;
+            }
+
+            .btn-primary,
+            .btn-outline {
+                padding: 12px 28px;
+                font-size: 0.9rem;
+            }
+
+            .contact-phones {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact-item .value {
+                font-size: 1rem;
+            }
+
+            .about-tags {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── HEADER ─── -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                Zhen <span>Choo</span>
+                <span class="sub">Chinese Restaurant</span>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#about">Our Story</a>
+                <a href="#location">Location</a>
+                <a href="#hours">Hours</a>
+                <a href="#menu">Menu</a>
+                <a href="#contact" class="nav-cta">Call Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ─── HERO ─── -->
+    <section class="hero">
+        <div class="container hero-content">
+            <span class="badge">Take Out Only</span>
+            <p class="subtitle serif">Authentic Szechuan • Hunan • Mandarin</p>
+            <h1 class="serif">Zhen Choo</h1>
+            <p class="tagline">
+                Where every dish tells a story of heritage and culinary craftsmanship.
+                Made fresh with vegetable oil &bull; low salt available.
+            </p>
+            <div class="hero-actions">
+                <a href="#menu" class="btn-primary">View Full Menu</a>
+                <a href="#contact" class="btn-outline">Order Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── ABOUT ─── -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Our <span class="accent">Story</span></h2>
+            <div class="divider"></div>
+            <div class="about-story">
+                <p>
+                    Zhen Choo is more than a restaurant – it's a labor of love. Locally owned and operated by a
+                    <span class="highlight">dedicated couple</span>, we opened our doors in
+                    <span class="highlight">2003</span> with a simple dream: to bring the true taste of authentic
+                    Chinese home cooking to the Pittsburgh community.
+                </p>
+                <p>
+                    For <span class="highlight">over 20 years</span>, we've had the privilege of serving generations
+                    of families, sharing meals, and creating lasting memories. Through the unprecedented challenges
+                    of COVID, we worked tirelessly to keep our doors open and our neighbors fed, never compromising
+                    on the quality or authenticity of our dishes.
+                </p>
+                <p>
+                    Our commitment remains the same today – to provide a <span class="highlight">warm, inviting
+                    environment</span> where every guest feels like family, and every bite tastes like tradition.
+                </p>
+            </div>
+            <div class="about-tags">
+                <span class="about-tag"><span>🏮</span> Since 2003</span>
+                <span class="about-tag"><span>❤️</span> Family Owned</span>
+                <span class="about-tag"><span>🥢</span> Authentic Recipes</span>
+                <span class="about-tag"><span>🌿</span> Vegetarian Options</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── LOCATION ─── -->
+    <section id="location">
+        <div class="container">
+            <h2 class="section-title">Find <span class="accent">Us</span></h2>
+            <p class="section-subtitle">
+                Located in the Braddock Hills Shopping Center, we're here to serve you.
+            </p>
+
+            <div class="location-grid">
+                <div class="location-card">
+                    <h3 class="serif">📍 Our Location</h3>
+                    <p class="address"><span class="shopping-center">Braddock Hills Shopping Center</span></p>
+                    <p class="address">268 Yost Blvd, Pittsburgh, PA 15221</p>
+
+                    <span class="detail-label">📞 Call to Order</span>
+                    <div class="detail-value contact-phones">
+                        <a href="tel:+14122715122" class="phone-link">(412) 271-5122</a>
+                        <a href="tel:+14122711899" class="phone-link">(412) 271-1899</a>
+                    </div>
+
+                    <span class="detail-label">💰 Price Range</span>
+                    <p class="detail-value"><span class="price-range">$10 – $20 per person</span></p>
+
+                    <div class="service-note">
+                        <strong>Service options:</strong> Take Out Only &bull; No Reservations &bull; Vegetarian options available
+                    </div>
+                </div>
+
+                <div class="location-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3029.025584927248!2d-79.868717784636!3d40.42862997936251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834f2b2e8b6b4e3%3A0x3f4a0f2e1c5d6a7b!2s268%20Yost%20Blvd%2C%20Pittsburgh%2C%20PA%2015221!5e0!3m2!1sen!2sus!4v1700000000000"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Zhen Choo Restaurant location map">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── HOURS ─── -->
+    <section id="hours" class="hours-section">
+        <div class="container">
+            <h2 class="section-title">Hours of <span class="accent">Operation</span></h2>
+            <p class="section-subtitle">
+                Open 7 days a week. Come enjoy our warm hospitality and delicious cuisine.
+            </p>
+
+            <div class="hours-grid">
+                <div class="hours-card">
+                    <div class="day">Monday – Friday</div>
+                    <div class="time">11:00 AM – 9:30 PM</div>
+                </div>
+                <div class="hours-card">
+                    <div class="day">Saturday</div>
+                    <div class="time">1:00 PM – 9:30 PM</div>
+                </div>
+                <div class="hours-card">
+                    <div class="day">Sunday</div>
+                    <div class="time">1:00 PM – 8:30 PM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── MENU ─── -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2 class="section-title">Our <span class="accent">Menu</span></h2>
+            <p class="section-subtitle">
+                Made fresh daily with the finest ingredients. Prices available upon request.
+            </p>
+
+            <div class="menu-note">
+                🌶️ <strong>Red = Spicy</strong> &bull; We can alter the spice according to your taste.
+                Dishes not on the menu can be prepared to your preferences.
+            </div>
+
+            <div class="menu-categories" id="menuCategories">
+                <button class="menu-category-btn active" data-category="all">All</button>
+                <button class="menu-category-btn" data-category="appetizers">Appetizers</button>
+                <button class="menu-category-btn" data-category="soups">Soups</button>
+                <button class="menu-category-btn" data-category="vegetable">Vegetable</button>
+                <button class="menu-category-btn" data-category="egg-foo-young">Egg Foo Young</button>
+                <button class="menu-category-btn" data-category="combination">Combination Plates</button>
+                <button class="menu-category-btn" data-category="lunch">Lunch Special</button>
+                <button class="menu-category-btn" data-category="chicken-pork">Chicken &amp; Pork</button>
+                <button class="menu-category-btn" data-category="beef">Beef</button>
+                <button class="menu-category-btn" data-category="seafood">Seafood</button>
+                <button class="menu-category-btn" data-category="noodles">Noodles &amp; Rice</button>
+                <button class="menu-category-btn" data-category="specialties">Specialties</button>
+                <button class="menu-category-btn" data-category="chefs">Chef's Suggestions</button>
+            </div>
+
+            <div class="menu-grid" id="menuGrid">
+                <!-- Items will be injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CONTACT ─── -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get in <span class="accent" style="color:#d4a373;">Touch</span></h2>
+            <p class="section-subtitle">
+                Call ahead for take out — we'll have your order hot and ready when you arrive.
+            </p>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="label">📞 Call Us</span>
+                    <div class="value contact-phones">
+                        <a href="tel:+14122715122">(412) 271-5122</a>
+                        <a href="tel:+14122711899">(412) 271-1899</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="label">📍 Visit Us</span>
+                    <span class="value">268 Yost Blvd, Pittsburgh, PA 15221</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <div class="container">
+            <div class="footer-brand">Zhen Choo</div>
+            <p>© 2026 Zhen Choo Chinese Restaurant &mdash; All rights reserved.</p>
+            <p style="font-size:0.75rem; margin-top:4px; color:#6b5a4e;">
+                Braddock Hills Shopping Center &bull; 268 Yost Blvd, Pittsburgh, PA 15221
+            </p>
+        </div>
+    </footer>
+
+    <!-- ─── JAVASCRIPT ─── -->
+    <script>
+        (function() {
+            // ── Mobile Nav Toggle ──
+            const toggle = document.getElementById('navToggle');
+            const nav = document.getElementById('navLinks');
+            toggle.addEventListener('click', () => {
+                nav.classList.toggle('open');
+            });
+
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('open');
+                });
+            });
+
+            // ── Full Menu Data from PDF ──
+            const menuData = [
+                // ── Appetizers ──
+                { id: 1, name: 'Shrimp Egg Roll', description: 'Crispy egg roll filled with shrimp and vegetables.', category: 'appetizers' },
+                { id: 2, name: 'Pork / Chicken Egg Roll', description: 'Classic egg roll with your choice of pork or chicken.', category: 'appetizers' },
+                { id: 3, name: 'Vegetable Spring Roll', description: 'Light and crispy spring roll filled with fresh vegetables.', category: 'appetizers', badge: 'Vegetarian' },
+                { id: 4, name: 'Chicken on a Stick', description: 'Tender grilled chicken skewers served with dipping sauce.', category: 'appetizers' },
+                { id: 5, name: 'Boneless Spare Ribs', description: 'Tender, flavorful boneless ribs with a sweet glaze.', category: 'appetizers' },
+                { id: 6, name: 'Steam Dumplings (8)', description: 'Delicate steamed dumplings with a savory filling.', category: 'appetizers' },
+                { id: 7, name: 'Fried Dumplings (8)', description: 'Crispy pan-fried dumplings with a golden bottom.', category: 'appetizers' },
+                { id: 8, name: 'Fried Wonton (12)', description: 'Crispy wontons served with sweet and sour sauce.', category: 'appetizers' },
+                { id: 9, name: 'Shrimp Toast (4)', description: 'Golden-fried toast topped with seasoned shrimp paste.', category: 'appetizers' },
+                { id: 10, name: 'Fried Cheese Wonton (Crab Rangoon)', description: 'Crispy wontons filled with cream cheese and crab.', category: 'appetizers' },
+                { id: 11, name: 'Noodle with Sesame Paste', description: 'Cold noodles tossed in a rich sesame paste sauce.', category: 'appetizers', badge: 'Vegetarian' },
+                { id: 12, name: 'Spicy Wonton', description: 'Wontons in a spicy chili oil sauce.', category: 'appetizers', badge: 'Spicy' },
+                { id: 13, name: 'Pu Pu Platter (for 2)', description: 'A generous platter of assorted appetizers.', category: 'appetizers' },
+
+                // ── Soups ──
+                { id: 14, name: 'Wonton Soup', description: 'Classic wonton soup with savory broth and tender wontons.', category: 'soups' },
+                { id: 15, name: 'Egg Drop Soup', description: 'Silky egg ribbons in a light, savory broth.', category: 'soups', badge: 'Vegetarian' },
+                { id: 16, name: 'Wonton Egg Drop Soup', description: 'A delicious combination of wonton and egg drop soups.', category: 'soups' },
+                { id: 17, name: 'Hot & Sour Soup', description: 'A tangy, spicy soup with tofu, mushroom, and bamboo shoots.', category: 'soups', badge: 'Spicy' },
+                { id: 18, name: 'Chicken Noodle or Rice Soup', description: 'Hearty soup with chicken and your choice of noodle or rice.', category: 'soups' },
+                { id: 19, name: 'Chinese Vegetable Soup', description: 'A light broth with fresh seasonal vegetables.', category: 'soups', badge: 'Vegetarian' },
+                { id: 20, name: 'House Special Soup', description: 'A rich soup with a medley of meats and vegetables.', category: 'soups' },
+                { id: 21, name: 'Chicken & Corn Soup', description: 'Smooth and creamy soup with chicken and sweet corn.', category: 'soups' },
+
+                // ── Vegetable ──
+                { id: 22, name: 'Mixed Vegetable', description: 'Fresh garden vegetables stir-fried to perfection.', category: 'vegetable', badge: 'Vegetarian' },
+                { id: 23, name: 'Sauteed Broccoli', description: 'Fresh broccoli lightly sautéed in a savory sauce.', category: 'vegetable', badge: 'Vegetarian' },
+                { id: 24, name: 'Broccoli with Garlic Sauce', description: 'Broccoli tossed in a fragrant garlic sauce.', category: 'vegetable', badge: 'Vegetarian' },
+                { id: 25, name: 'Bean Curd with Szechuan Style', description: 'Tofu prepared in bold Szechuan flavors.', category: 'vegetable', badge: 'Spicy' },
+                { id: 26, name: 'Ma Po Tofu', description: 'Silken tofu in a spicy bean-based sauce with chili oil.', category: 'vegetable', badge: 'Spicy' },
+                { id: 27, name: 'House Special Bean Curd', description: 'Tofu with mixed vegetables in a savory sauce.', category: 'vegetable', badge: 'Vegetarian' },
+                { id: 28, name: "General Tso's Bean Curd", description: 'Crispy tofu in a sweet and spicy General Tso sauce.', category: 'vegetable' },
+                { id: 29, name: 'Moo Shu Vegetable (w/4 Pancakes)', description: 'Stir-fried vegetables served with pancakes and hoisin sauce.', category: 'vegetable', badge: 'Vegetarian' },
+
+                // ── Egg Foo Young ──
+                { id: 30, name: 'Vegetable Egg Foo Young (3)', description: 'Fluffy egg omelet with fresh vegetables.', category: 'egg-foo-young', badge: 'Vegetarian' },
+                { id: 31, name: 'Chicken / Pork Egg Foo Young (3)', description: 'Egg omelet with your choice of chicken or pork.', category: 'egg-foo-young' },
+                { id: 32, name: 'Shrimp / Beef Egg Foo Young (3)', description: 'Egg omelet with shrimp or tender beef.', category: 'egg-foo-young' },
+                { id: 33, name: 'House Egg Foo Young (3)', description: 'A combination of meats and vegetables in a fluffy egg omelet.', category: 'egg-foo-young' },
+
+                // ── Combination Plates ──
+                { id: 34, name: 'Chicken or Pork Chow Mein', description: 'Classic chow mein with your choice of meat.', category: 'combination' },
+                { id: 35, name: 'Chicken with Mixed Veg', description: 'Chicken stir-fried with fresh mixed vegetables.', category: 'combination' },
+                { id: 36, name: 'Chicken with Broccoli', description: 'Tender chicken with crisp broccoli in a savory sauce.', category: 'combination' },
+                { id: 37, name: 'Shrimp Chow Mein', description: 'Chow mein with succulent shrimp and vegetables.', category: 'combination' },
+                { id: 38, name: 'Chicken Egg Foo Young', description: 'A classic egg foo young with chicken.', category: 'combination' },
+                { id: 39, name: 'Chicken or Pork Lo Mein', description: 'Soft noodles stir-fried with your choice of meat.', category: 'combination' },
+                { id: 40, name: 'Sweet & Sour Chicken', description: 'Crispy chicken with a sweet and tangy sauce.', category: 'combination' },
+                { id: 41, name: 'Moo Goo Gai Pan', description: 'Chicken with mushrooms and vegetables in a light sauce.', category: 'combination' },
+                { id: 42, name: 'Pepper Steak with Onion', description: 'Tender beef with bell peppers and onions.', category: 'combination' },
+                { id: 43, name: 'Shrimp with Lobster Sauce', description: 'Jumbo shrimp in a savory egg-based sauce.', category: 'combination' },
+                { id: 44, name: 'Shrimp or Beef with Mixed Veg', description: 'Your choice of shrimp or beef with mixed vegetables.', category: 'combination' },
+                { id: 45, name: 'Beef or Shrimp with Broccoli', description: 'Choice of beef or shrimp with fresh broccoli.', category: 'combination' },
+                { id: 46, name: 'Beef or Shrimp with Lo Mein', description: 'Lo Mein with your choice of beef or shrimp.', category: 'combination' },
+                { id: 47, name: 'Kung Pao Chicken', description: 'Diced chicken with peanuts and chili peppers in a bold sauce.', category: 'combination', badge: 'Spicy' },
+                { id: 48, name: "General Tso's Chicken", description: 'Crispy chicken in a sweet and spicy sauce.', category: 'combination', badge: 'Spicy' },
+                { id: 49, name: 'Sesame Chicken', description: 'Crispy chicken with a sweet sauce and sesame seeds.', category: 'combination' },
+                { id: 50, name: 'Boneless Spare Ribs', description: 'Tender boneless ribs with a sweet glaze.', category: 'combination' },
+
+                // ── Lunch Special ──
+                { id: 51, name: 'Chicken or Pork Chow Mein', description: 'Classic chow mein with your choice of meat.', category: 'lunch' },
+                { id: 52, name: 'Shrimp Chow Mein', description: 'Chow mein with shrimp and vegetables.', category: 'lunch' },
+                { id: 53, name: 'Shrimp and Chicken', description: 'A delicious combination of shrimp and chicken.', category: 'lunch' },
+                { id: 54, name: 'Roast Pork with Broccoli', description: 'Roast pork with crisp broccoli in a savory sauce.', category: 'lunch' },
+                { id: 55, name: 'Chicken with Broccoli', description: 'Chicken and broccoli in a classic sauce.', category: 'lunch' },
+                { id: 56, name: 'Shrimp with Lobster Sauce', description: 'Shrimp in a rich lobster sauce.', category: 'lunch' },
+                { id: 57, name: 'Chicken or Pork with Mixed Veg', description: 'Your choice of meat with fresh mixed vegetables.', category: 'lunch' },
+                { id: 58, name: 'Shrimp or Beef with Mixed Veg', description: 'Choice of shrimp or beef with mixed vegetables.', category: 'lunch' },
+                { id: 59, name: 'Pepper Steak with Onion', description: 'Beef with bell peppers and onions.', category: 'lunch' },
+
+                // ── Chicken & Pork ──
+                { id: 60, name: 'Chicken / Pork with Broccoli', description: 'Your choice of meat with fresh broccoli.', category: 'chicken-pork' },
+                { id: 61, name: 'Chicken / Pork with Mixed Vegetables', description: 'Choice of meat with mixed vegetables.', category: 'chicken-pork' },
+                { id: 62, name: 'Moo Goo Gai Pan', description: 'Chicken with mushrooms and vegetables.', category: 'chicken-pork' },
+                { id: 63, name: 'Chicken with Cashew Nuts', description: 'Chicken stir-fried with cashews and vegetables.', category: 'chicken-pork' },
+                { id: 64, name: 'Double Cooked Pork', description: 'Pork cooked twice for a rich, savory flavor.', category: 'chicken-pork' },
+                { id: 65, name: 'Curry Chicken with Onion', description: 'Chicken in a fragrant curry sauce with onions.', category: 'chicken-pork' },
+                { id: 66, name: 'Kung Pao Chicken', description: 'Chicken with peanuts and chili peppers.', category: 'chicken-pork', badge: 'Spicy' },
+                { id: 67, name: 'Chicken / Pork with Garlic Sauce', description: 'Choice of meat in a savory garlic sauce.', category: 'chicken-pork' },
+                { id: 68, name: 'Hunan Chicken / Pork', description: 'Spicy Hunan-style preparation with vegetables.', category: 'chicken-pork', badge: 'Spicy' },
+                { id: 69, name: 'Chicken / Pork with Szechuan Style', description: 'Bold Szechuan flavors with your choice of meat.', category: 'chicken-pork', badge: 'Spicy' },
+                { id: 70, name: 'Sweet & Sour Chicken', description: 'Classic sweet and sour chicken.', category: 'chicken-pork' },
+                { id: 71, name: 'Chicken & Shrimp', description: 'A delicious combination of chicken and shrimp.', category: 'chicken-pork' },
+                { id: 72, name: 'Moo Shu Chicken / Pork (w/4 Pancakes)', description: 'Stir-fried with vegetables and served with pancakes.', category: 'chicken-pork' },
+
+                // ── Beef ──
+                { id: 73, name: 'Beef with Broccoli', description: 'Tender beef with fresh broccoli in a savory sauce.', category: 'beef' },
+                { id: 74, name: 'Beef with Mixed Vegetables', description: 'Beef stir-fried with fresh mixed vegetables.', category: 'beef' },
+                { id: 75, name: 'Pepper Steak with Onion', description: 'Beef with bell peppers and onions.', category: 'beef' },
+                { id: 76, name: 'Curry Beef with Onion', description: 'Beef in a fragrant curry sauce with onions.', category: 'beef' },
+                { id: 77, name: 'Kung Pao Beef', description: 'Beef with peanuts and chili peppers.', category: 'beef', badge: 'Spicy' },
+                { id: 78, name: 'Hunan Beef', description: 'Spicy Hunan-style beef with vegetables.', category: 'beef', badge: 'Spicy' },
+                { id: 79, name: 'Beef with Garlic Sauce', description: 'Beef in a savory garlic sauce.', category: 'beef' },
+                { id: 80, name: 'Mongolian Beef', description: 'Sliced beef with scallions and onions in a rich sauce.', category: 'beef' },
+                { id: 81, name: 'Hot & Spicy Beef', description: 'Beef prepared with chili and bold spices.', category: 'beef', badge: 'Spicy' },
+                { id: 82, name: 'Beef with Szechuan Style', description: 'Beef in a bold Szechuan sauce.', category: 'beef', badge: 'Spicy' },
+
+                // ── Seafood ──
+                { id: 83, name: 'Shrimp with Broccoli', description: 'Shrimp with crisp broccoli in a savory sauce.', category: 'seafood' },
+                { id: 84, name: 'Shrimp with Mixed Vegetable', description: 'Shrimp stir-fried with fresh vegetables.', category: 'seafood' },
+                { id: 85, name: 'Shrimp Lobster Sauce', description: 'Shrimp in a savory egg-based lobster sauce.', category: 'seafood' },
+                { id: 86, name: 'Kung Pao Shrimp', description: 'Shrimp with peanuts and chili peppers.', category: 'seafood', badge: 'Spicy' },
+                { id: 87, name: 'Shrimp with Garlic Sauce', description: 'Shrimp in a fragrant garlic sauce.', category: 'seafood' },
+                { id: 88, name: 'Hunan Shrimp', description: 'Spicy Hunan-style shrimp with vegetables.', category: 'seafood', badge: 'Spicy' },
+                { id: 89, name: 'Curry Shrimp', description: 'Shrimp in a rich curry sauce.', category: 'seafood' },
+                { id: 90, name: 'Shrimp with Szechuan Style', description: 'Shrimp prepared with bold Szechuan spices.', category: 'seafood', badge: 'Spicy' },
+                { id: 91, name: 'Sweet and Sour Shrimp', description: 'Crispy shrimp with a sweet and tangy sauce.', category: 'seafood' },
+                { id: 92, name: 'Scallop with Mixed Chinese Vegetable', description: 'Fresh scallops with mixed vegetables.', category: 'seafood' },
+                { id: 93, name: 'Moo Shu Shrimp (w/4 Pancakes)', description: 'Shrimp with vegetables and pancakes.', category: 'seafood' },
+
+                // ── Noodles & Rice ──
+                { id: 94, name: 'Vegetable Fried Rice', description: 'Wok-fried rice with fresh vegetables and egg.', category: 'noodles', badge: 'Vegetarian' },
+                { id: 95, name: 'Pork or Chicken Fried Rice', description: 'Fried rice with your choice of pork or chicken.', category: 'noodles' },
+                { id: 96, name: 'Shrimp Fried Rice', description: 'Fried rice with succulent shrimp.', category: 'noodles' },
+                { id: 97, name: 'Beef Fried Rice', description: 'Fried rice with tender beef.', category: 'noodles' },
+                { id: 98, name: 'House Special Fried Rice', description: 'A combination of meats in flavorful fried rice.', category: 'noodles' },
+                { id: 99, name: 'Vegetable Lo Mein', description: 'Soft noodles with fresh vegetables.', category: 'noodles', badge: 'Vegetarian' },
+                { id: 100, name: 'Pork Lo Mein', description: 'Soft noodles with pork and vegetables.', category: 'noodles' },
+                { id: 101, name: 'Chicken Lo Mein', description: 'Soft noodles with chicken and vegetables.', category: 'noodles' },
+                { id: 102, name: 'Beef Lo Mein', description: 'Soft noodles with beef and vegetables.', category: 'noodles' },
+                { id: 103, name: 'Shrimp Lo Mein', description: 'Soft noodles with shrimp and vegetables.', category: 'noodles' },
+                { id: 104, name: 'House Special Lo Mein', description: 'A combination of meats in soft noodles.', category: 'noodles' },
+                { id: 105, name: 'Vegetable Mai Fun', description: 'Rice noodles with fresh vegetables.', category: 'noodles', badge: 'Vegetarian' },
+                { id: 106, name: 'Pork Mai Fun', description: 'Rice noodles with pork and vegetables.', category: 'noodles' },
+                { id: 107, name: 'Chicken Mai Fun', description: 'Rice noodles with chicken and vegetables.', category: 'noodles' },
+                { id: 108, name: 'Beef Mai Fun', description: 'Rice noodles with beef and vegetables.', category: 'noodles' },
+                { id: 109, name: 'Shrimp Mai Fun', description: 'Rice noodles with shrimp and vegetables.', category: 'noodles' },
+                { id: 110, name: 'House Special Mai Fun', description: 'A combination of meats in rice noodles.', category: 'noodles' },
+                { id: 111, name: 'Singapore Mai Fun', description: 'Rice noodles with shrimp, BBQ pork, and curry spice.', category: 'noodles', badge: 'Spicy' },
+                { id: 112, name: 'Vegetable Chow Mein', description: 'Crispy noodles with fresh vegetables.', category: 'noodles', badge: 'Vegetarian' },
+                { id: 113, name: 'Chicken Chow Mein', description: 'Crispy noodles with chicken and vegetables.', category: 'noodles' },
+                { id: 114, name: 'Pork Chow Mein', description: 'Crispy noodles with pork and vegetables.', category: 'noodles' },
+                { id: 115, name: 'Shrimp Chow Mein', description: 'Crispy noodles with shrimp and vegetables.', category: 'noodles' },
+                { id: 116, name: 'Beef Chow Mein', description: 'Crispy noodles with beef and vegetables.', category: 'noodles' },
+                { id: 117, name: 'Vegetable Chop Suey', description: 'Mixed vegetables in a savory chop suey sauce.', category: 'noodles', badge: 'Vegetarian' },
+                { id: 118, name: 'Chicken Chop Suey', description: 'Chicken and vegetables in chop suey sauce.', category: 'noodles' },
+                { id: 119, name: 'Pork Chop Suey', description: 'Pork and vegetables in chop suey sauce.', category: 'noodles' },
+                { id: 120, name: 'Shrimp Chop Suey', description: 'Shrimp and vegetables in chop suey sauce.', category: 'noodles' },
+                { id: 121, name: 'Beef Chop Suey', description: 'Beef and vegetables in chop suey sauce.', category: 'noodles' },
+
+                // ── Specialties ──
+                { id: 122, name: 'Fried Chicken Wings', description: 'Crispy fried chicken wings.', category: 'specialties' },
+                { id: 123, name: 'Fried Jumbo Shrimp', description: 'Large crispy fried shrimp.', category: 'specialties' },
+                { id: 124, name: 'Fried Baby Shrimp', description: 'Crispy fried baby shrimp.', category: 'specialties' },
+                { id: 125, name: 'Fried Scallops', description: 'Crispy fried scallops.', category: 'specialties' },
+                { id: 126, name: 'Fried Chicken Nuggets', description: 'Crispy bite-sized chicken nuggets.', category: 'specialties' },
+
+                // ── Chef's Suggestions ──
+                { id: 127, name: 'Happy Family', description: 'A mix of scallops, shrimp, roast pork, beef, chicken, and vegetables in brown sauce.', category: 'chefs' },
+                { id: 128, name: 'Seafood Delight', description: 'Shrimp and scallops with mixed vegetables in a light white sauce.', category: 'chefs' },
+                { id: 129, name: 'Triple Delight', description: 'Shrimp, beef, and chicken with broccoli, mushroom, and baby corn in brown sauce.', category: 'chefs' },
+                { id: 130, name: "General Tso's Chicken", description: 'Chicken, lightly breaded and deep fried, with mixed vegetables in a spicy sweet brown sauce.', category: 'chefs', badge: 'Spicy' },
+                { id: 131, name: "General Tso's Shrimp or Beef", description: 'Shrimp or beef breaded and deep fried, with mixed vegetables in a spicy sweet brown sauce.', category: 'chefs', badge: 'Spicy' },
+                { id: 132, name: 'Capital Chicken', description: 'Tender chicken breast with broccoli, mushroom, green pepper, and baby corn in spicy brown sauce.', category: 'chefs', badge: 'Spicy' },
+                { id: 133, name: 'Honey Chicken', description: 'Golden fried chicken smothered with special honey sauce.', category: 'chefs' },
+                { id: 134, name: 'Hunan Delicacy', description: 'Shrimp and beef in two different spicy sauces.', category: 'chefs', badge: 'Spicy' },
+                { id: 135, name: 'Sesame Chicken', description: 'Chicken, lightly breaded and deep fried, with mixed vegetables in spicy sweet brown sauce with sesame seeds.', category: 'chefs' },
+                { id: 136, name: 'Boneless Chicken', description: 'White meat chicken, deep fried, served with mixed vegetables.', category: 'chefs' },
+                { id: 137, name: 'Dragon & Phoenix', description: 'Shrimp with mixed vegetables in a light sauce, and chunks of chicken in a spicy sweet brown sauce.', category: 'chefs' },
+                { id: 138, name: 'Perfect Match', description: 'Fresh scallops and shrimp sautéed with vegetables in garlic sauce.', category: 'chefs' },
+                { id: 139, name: 'Four Season', description: 'Jumbo shrimp, chicken, pork, and beef with mixed vegetables.', category: 'chefs' },
+                { id: 140, name: 'Beef & Scallops', description: 'Sliced tender beef and scallops with mixed vegetables.', category: 'chefs' },
+                { id: 141, name: 'Orange Chicken', description: 'Crispy chicken in a tangy orange sauce.', category: 'chefs' },
+                { id: 142, name: 'Orange Beef or Shrimp', description: 'Your choice of beef or shrimp in a tangy orange sauce.', category: 'chefs' },
+                { id: 143, name: 'Hot and Spicy Shrimp', description: 'Shrimp prepared with bold chili and spices.', category: 'chefs', badge: 'Spicy' },
+                { id: 144, name: 'Lemon Chicken', description: 'Crispy chicken in a bright lemon sauce.', category: 'chefs' },
+            ];
+
+            // ── Render Menu ──
+            const grid = document.getElementById('menuGrid');
+            const categoryBtns = document.querySelectorAll('.menu-category-btn');
+
+            function getBadgeClass(badge) {
+                if (!badge) return '';
+                if (badge === 'Spicy') return 'spicy';
+                if (badge === 'Vegetarian') return 'veg';
+                return '';
+            }
+
+            function renderMenu(category = 'all') {
+                const filtered = category === 'all' ?
+                    menuData :
+                    menuData.filter(item => item.category === category);
+
+                if (filtered.length === 0) {
+                    grid.innerHTML =
+                        `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#6b4c3a; font-style:italic;">No items in this category</div>`;
+                    return;
+                }
+
+                grid.innerHTML = filtered.map(item => `
+                        <div class="menu-item">
+                            <div class="name">${item.name}</div>
+                            <div class="description">${item.description}</div>
+                            ${item.badge ? `<span class="badge ${getBadgeClass(item.badge)}">${item.badge}</span>` : ''}
+                        </div>
+                    `).join('');
+            }
+
+            // ── Category Filter ──
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderMenu(btn.dataset.category);
+                });
+            });
+
+            // ── Initial Render ──
+            renderMenu('all');
+
+            // ── Smooth scroll for anchor links ──
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>
