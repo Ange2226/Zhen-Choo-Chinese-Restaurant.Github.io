@@ -75,19 +75,6 @@
             opacity: 0.8;
         }
 
-        .chinese-border {
-            border: 2px solid #c0392b;
-            border-radius: 8px;
-            padding: 4px;
-            position: relative;
-        }
-
-        .chinese-border-inner {
-            border: 1px solid #d4a373;
-            border-radius: 6px;
-            padding: 2px;
-        }
-
         /* ── Header / Navigation ── */
         header {
             background: #1a0e08;
@@ -147,11 +134,15 @@
             font-size: 0.9rem;
             letter-spacing: 0.5px;
             align-items: center;
+            justify-content: center;
+            flex: 1 1 auto;
+            /* take remaining space */;
         }
 
         .nav-links a {
             transition: color 0.25s;
             position: relative;
+            padding: 4px 0;
         }
 
         .nav-links a::after {
@@ -173,13 +164,15 @@
             color: #d4a373;
         }
 
+        /* ---- Call-to-action button in nav ---- */
         .nav-cta {
             background: #c0392b;
             color: #f5e6d3 !important;
-            padding: 8px 24px;
+            padding: 8px 28px;
             border-radius: 30px;
             font-weight: 600;
             transition: background 0.25s;
+            margin: 0 8px;
         }
 
         .nav-cta::after {
@@ -191,12 +184,12 @@
             color: #f5e6d3 !important;
         }
 
-        /* ── Language Toggle ── */
+        /* ---- Language toggle inside nav ---- */
         .lang-toggle {
             background: transparent;
             border: 1.5px solid #d4a373;
             color: #d4a373;
-            padding: 4px 14px;
+            padding: 4px 16px;
             border-radius: 30px;
             font-size: 0.75rem;
             font-weight: 600;
@@ -206,6 +199,8 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             white-space: nowrap;
+            margin-left: auto;
+            /* push to the right */;
         }
 
         .lang-toggle:hover {
@@ -227,6 +222,7 @@
             border: none;
             cursor: pointer;
             padding: 4px;
+            margin-left: auto;
         }
 
         .nav-toggle span {
@@ -236,12 +232,6 @@
             background: #f5e6d3;
             border-radius: 4px;
             transition: 0.3s;
-        }
-
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 14px;
         }
 
         /* ── Hero ── */
@@ -862,6 +852,12 @@
             .contact-info {
                 gap: 28px;
             }
+
+            .nav-links {
+                gap: 14px;
+                font-size: 0.8rem;
+                flex-wrap: wrap;
+            }
         }
 
         @media (max-width: 640px) {
@@ -874,6 +870,7 @@
                 gap: 14px;
                 align-items: center;
                 order: 10;
+                flex: 0 0 100%;
             }
 
             .nav-links.open {
@@ -884,13 +881,9 @@
                 display: flex;
             }
 
-            .nav-controls {
-                gap: 10px;
-            }
-
             .lang-toggle {
-                font-size: 0.65rem;
-                padding: 3px 12px;
+                margin-left: 0;
+                /* reset for mobile, it will be inside nav-links */
             }
 
             .hero h1 {
@@ -945,6 +938,11 @@
             .header-inner {
                 flex-wrap: wrap;
             }
+
+            .nav-cta {
+                padding: 8px 20px;
+                margin: 0;
+            }
         }
 
         @media (max-width: 420px) {
@@ -991,19 +989,17 @@
                 <span class="sub">Chinese Restaurant</span>
             </div>
 
-            <div class="nav-controls">
-                <button class="lang-toggle" id="langToggle" aria-label="Toggle language">中文</button>
-                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
 
             <nav class="nav-links" id="navLinks">
                 <a href="#about" data-i18n="nav.about">Our Story</a>
                 <a href="#location" data-i18n="nav.location">Location</a>
+                <a href="#contact" class="nav-cta" data-i18n="nav.call">Call Us</a>  <!-- moved to middle -->
                 <a href="#hours" data-i18n="nav.hours">Hours</a>
                 <a href="#menu" data-i18n="nav.menu">Menu</a>
-                <a href="#contact" class="nav-cta" data-i18n="nav.call">Call Us</a>
+                <button class="lang-toggle" id="langToggle" aria-label="Toggle language">中文</button>
             </nav>
         </div>
     </header>
@@ -1014,14 +1010,15 @@
             <span class="badge" data-i18n="hero.badge">Take Out Only</span>
             <div class="chinese-title">珍珠</div>
             <h1 class="serif">Zhen Choo</h1>
-            <p class="subtitle serif" data-i18n="hero.subtitle">Authentic Szechuan • Hunan • Mandarin</p>
+            <p class="subtitle serif" data-i18n="hero.subtitle">Classic Szechuan • Hunan • Mandarin</p>
             <p class="tagline" data-i18n="hero.tagline">
-                Where every dish tells a story of heritage and culinary craftsmanship.
+                Our family‑favorite recipes bring the comfort of Chinese‑American cuisine to Pittsburgh. 
                 Made fresh with vegetable oil &bull; low salt available.
             </p>
             <div class="hero-actions">
-                <a href="#menu" class="btn-primary" data-i18n="hero.btn1">View Full Menu</a>
-                <a href="#contact" class="btn-outline" data-i18n="hero.btn2">Call us to order</a>
+                <!-- Call to order now primary -->
+                <a href="#contact" class="btn-primary" data-i18n="hero.btn2">Call us to order</a>
+                <a href="#menu" class="btn-outline" data-i18n="hero.btn1">View Full Menu</a>
             </div>
         </div>
     </section>
@@ -1042,18 +1039,18 @@
                 <p data-i18n="about.p1">
                     Zhen Choo is more than a restaurant – it's our <span class="highlight">home</span>. Locally owned and operated by a
                     <span class="highlight">dedicated couple</span>, we opened our doors in
-                    <span class="highlight">2003</span> with a simple dream: to bring the true taste of authentic
-                    Chinese home cooking to the Pittsburgh community.
+                    <span class="highlight">2003</span> with a simple dream: to bring the comforting flavors of
+                    classic Chinese‑American dishes to the Pittsburgh community.
                 </p>
                 <p data-i18n="about.p2">
                     For <span class="highlight">over 20 years</span>, we've had the privilege of serving generations
                     of families, sharing meals, and creating lasting memories. Through the unprecedented challenges
                     of COVID, we worked tirelessly to keep our doors open and our neighbors fed, never compromising
-                    on the quality or authenticity of our dishes.
+                    on the quality or authenticity of our recipes.
                 </p>
                 <p data-i18n="about.p3">
                     Our commitment remains the same today – to provide a <span class="highlight">warm, inviting
-                    environment</span> where every guest feels like family, and every bite tastes like tradition.
+                    environment</span> where every guest feels like family, and every bite brings back fond memories.
                     <br>
                     <span style="font-family: 'Ma Shan Zheng', cursive; font-size: 1.4rem; color: #c0392b; display: inline-block; margin-top: 8px;">欢迎回家</span>
                     <span style="display: block; font-size: 0.9rem; color: #6b4c3a; font-style: italic;" data-i18n="about.welcome">— Welcome home</span>
@@ -1062,7 +1059,7 @@
             <div class="about-tags">
                 <span class="about-tag"><span>🏮</span> <span data-i18n="about.tag1">Since 2003</span></span>
                 <span class="about-tag"><span>❤️</span> <span data-i18n="about.tag2">Family Owned</span></span>
-                <span class="about-tag"><span>🥢</span> <span data-i18n="about.tag3">Authentic Recipes</span></span>
+                <span class="about-tag"><span>🥢</span> <span data-i18n="about.tag3">Classic Recipes</span></span>
                 <span class="about-tag"><span>🌿</span> <span data-i18n="about.tag4">Vegetarian Options</span></span>
                 <span class="about-tag"><span>🏠</span> <span data-i18n="about.tag5">Local &amp; Proud</span></span>
             </div>
@@ -1220,7 +1217,7 @@
         <div class="footer-brand">
             <span class="chinese">珍珠</span> Zhen Choo
         </div>
-        <p data-i18n="footer.copyright">© 2026 Zhen Choo Chinese Restaurant &mdash; All rights reserved.</p>
+        <p data-i18n="footer.copyright">© 2026 Zhen Choo Chinese Restaurant — All rights reserved.</p>
         <p style="font-size:0.75rem; margin-top:4px; color:#6b5a4e;" data-i18n="footer.address">
             Braddock Hills Shopping Center &bull; 268 Yost Blvd, Pittsburgh, PA 15221
         </p>
@@ -1242,20 +1239,20 @@
                 'nav.menu': 'Menu',
                 'nav.call': 'Call Us',
                 'hero.badge': 'Take Out Only',
-                'hero.subtitle': 'Authentic Szechuan • Hunan • Mandarin',
-                'hero.tagline': 'Where every dish tells a story of heritage and culinary craftsmanship. Made fresh with vegetable oil • low salt available.',
+                'hero.subtitle': 'Classic Szechuan • Hunan • Mandarin',
+                'hero.tagline': 'Our family‑favorite recipes bring the comfort of Chinese‑American cuisine to Pittsburgh. Made fresh with vegetable oil • low salt available.',
                 'hero.btn1': 'View Full Menu',
                 'hero.btn2': 'Call us to order',
                 'about.chineseTitle': '我们的故事',
                 'about.titlePrefix': 'Our',
                 'about.titleAccent': 'Story',
-                'about.p1': 'Zhen Choo is more than a restaurant – it\'s our <span class="highlight">home</span>. Locally owned and operated by a <span class="highlight">dedicated couple</span>, we opened our doors in <span class="highlight">2003</span> with a simple dream: to bring the true taste of authentic Chinese home cooking to the Pittsburgh community.',
-                'about.p2': 'For <span class="highlight">over 20 years</span>, we\'ve had the privilege of serving generations of families, sharing meals, and creating lasting memories. Through the unprecedented challenges of COVID, we worked tirelessly to keep our doors open and our neighbors fed, never compromising on the quality or authenticity of our dishes.',
-                'about.p3': 'Our commitment remains the same today – to provide a <span class="highlight">warm, inviting environment</span> where every guest feels like family, and every bite tastes like tradition. <br> <span style="font-family: \'Ma Shan Zheng\', cursive; font-size: 1.4rem; color: #c0392b; display: inline-block; margin-top: 8px;">欢迎回家</span> <span style="display: block; font-size: 0.9rem; color: #6b4c3a; font-style: italic;">— Welcome home</span>',
+                'about.p1': 'Zhen Choo is more than a restaurant – it\'s our <span class="highlight">home</span>. Locally owned and operated by a <span class="highlight">dedicated couple</span>, we opened our doors in <span class="highlight">2003</span> with a simple dream: to bring the comforting flavors of classic Chinese‑American dishes to the Pittsburgh community.',
+                'about.p2': 'For <span class="highlight">over 20 years</span>, we\'ve had the privilege of serving generations of families, sharing meals, and creating lasting memories. Through the unprecedented challenges of COVID, we worked tirelessly to keep our doors open and our neighbors fed, never compromising on the quality or authenticity of our recipes.',
+                'about.p3': 'Our commitment remains the same today – to provide a <span class="highlight">warm, inviting environment</span> where every guest feels like family, and every bite brings back fond memories. <br> <span style="font-family: \'Ma Shan Zheng\', cursive; font-size: 1.4rem; color: #c0392b; display: inline-block; margin-top: 8px;">欢迎回家</span> <span style="display: block; font-size: 0.9rem; color: #6b4c3a; font-style: italic;">— Welcome home</span>',
                 'about.welcome': '— Welcome home',
                 'about.tag1': 'Since 2003',
                 'about.tag2': 'Family Owned',
-                'about.tag3': 'Authentic Recipes',
+                'about.tag3': 'Classic Recipes',
                 'about.tag4': 'Vegetarian Options',
                 'about.tag5': 'Local & Proud',
                 'location.chineseTitle': '找到我们',
@@ -1314,20 +1311,20 @@
                 'nav.menu': '菜单',
                 'nav.call': '联系我们',
                 'hero.badge': '仅限外卖',
-                'hero.subtitle': '正宗川菜 • 湘菜 • 北方菜',
-                'hero.tagline': '每一道菜都讲述着传统与烹饪技艺的故事。选用新鲜蔬菜油烹制 • 可提供低盐选项。',
+                'hero.subtitle': '经典川菜 • 湘菜 • 北方菜',
+                'hero.tagline': '我们家庭最爱的食谱为您带来匹兹堡最地道的中式美餐。选用新鲜蔬菜油烹制 • 可提供低盐选项。',
                 'hero.btn1': '查看完整菜单',
                 'hero.btn2': '电话订购',
                 'about.chineseTitle': '我们的故事',
                 'about.titlePrefix': '我们的',
                 'about.titleAccent': '故事',
-                'about.p1': '珍珠不仅仅是一家餐厅——它是我们的<span class="highlight">家</span>。由一对<span class="highlight">夫妇</span>本地拥有和经营，我们在<span class="highlight">2003年</span>开业，怀揣着一个简单的梦想：将正宗中国家庭烹饪的纯正味道带给匹兹堡社区。',
+                'about.p1': '珍珠不仅仅是一家餐厅——它是我们的<span class="highlight">家</span>。由一对<span class="highlight">夫妇</span>本地拥有和经营，我们在<span class="highlight">2003年</span>开业，怀揣着一个简单的梦想：将经典中式美餐的温馨风味带给匹兹堡社区。',
                 'about.p2': '二十多年来，我们有幸为一代又一代的家庭服务，共享美食，创造持久的回忆。面对疫情带来的前所未有的挑战，我们不懈努力，保持营业，为邻里提供食物，从未在菜肴的质量和正宗性上妥协。',
-                'about.p3': '今天，我们的承诺依然不变——提供一个<span class="highlight">温馨、宜人的环境</span>，让每一位客人都感到宾至如归，每一口都尝到传统的味道。<br> <span style="font-family: \'Ma Shan Zheng\', cursive; font-size: 1.4rem; color: #c0392b; display: inline-block; margin-top: 8px;">欢迎回家</span> <span style="display: block; font-size: 0.9rem; color: #6b4c3a; font-style: italic;">— 欢迎回家</span>',
+                'about.p3': '今天，我们的承诺依然不变——提供一个<span class="highlight">温馨、宜人的环境</span>，让每一位客人都感到宾至如归，每一口都带来美好的回忆。<br> <span style="font-family: \'Ma Shan Zheng\', cursive; font-size: 1.4rem; color: #c0392b; display: inline-block; margin-top: 8px;">欢迎回家</span> <span style="display: block; font-size: 0.9rem; color: #6b4c3a; font-style: italic;">— 欢迎回家</span>',
                 'about.welcome': '— 欢迎回家',
                 'about.tag1': '始于2003年',
                 'about.tag2': '家族经营',
-                'about.tag3': '正宗配方',
+                'about.tag3': '经典配方',
                 'about.tag4': '素食选项',
                 'about.tag5': '本地自豪',
                 'location.chineseTitle': '找到我们',
